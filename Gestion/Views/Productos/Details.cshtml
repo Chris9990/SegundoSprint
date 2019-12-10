@@ -1,0 +1,82 @@
+﻿@model Gestion.Models.Productos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Productos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Codigo del Producto:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Producto)
+        </dd>
+
+        <dt>
+            Nombre:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Producto)
+        </dd>
+
+        <dt>
+            Codigo de la Marca:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Marca)
+        </dd>
+
+        <dt>
+            Información:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Informacion)
+        </dd>
+
+        <dt>
+            Precio de Venta:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio_Venta)
+        </dd>
+
+        <dt>
+            Oferta:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oferta)
+        </dd>
+
+        <dt>
+            SubCategoria:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_SubCategoria)
+        </dd>
+
+        <dt>
+            URL:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URLVideo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Cod_Producto  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

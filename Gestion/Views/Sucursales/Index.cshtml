@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Gestion.Models.Sucursales>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Código Sucursal
+        </th>
+        <th>
+            Dirección
+        </th>
+        <th>
+            Teléfono
+        </th>
+        <th>
+            Latidud
+        </th>
+        <th>
+            Longitud
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cod_Sucursal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion_Sucursal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono_Sucursal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitud)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Cod_Sucursal  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.Cod_Sucursal  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.Cod_Sucursal })
+        </td>
+    </tr>
+}
+
+</table>

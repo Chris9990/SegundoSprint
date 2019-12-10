@@ -1,0 +1,34 @@
+﻿@model Gestion.Models.Marcas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Marcas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Codigo de Marca
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Marca)
+        </dd>
+
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Marca)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Cod_Marca  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
