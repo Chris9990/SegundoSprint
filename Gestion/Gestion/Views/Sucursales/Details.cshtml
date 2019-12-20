@@ -1,0 +1,58 @@
+﻿@model Gestion.Models.Sucursales
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sucursales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Código Sucursal:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Sucursal)
+        </dd>
+
+        <dt>
+            Dirección:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion_Sucursal)
+        </dd>
+
+        <dt>
+            Teléfono:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono_Sucursal)
+        </dd>
+
+        <dt>
+            Latitud:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitud)
+        </dd>
+
+        <dt>
+            Longitud:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitud)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Cod_Sucursal }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

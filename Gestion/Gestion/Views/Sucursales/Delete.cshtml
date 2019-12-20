@@ -1,0 +1,64 @@
+﻿@model Gestion.Models.Sucursales
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sucursales</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Código Sucursal:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Sucursal)
+        </dd>
+
+        <dt>
+            Dirección:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion_Sucursal)
+        </dd>
+
+        <dt>
+            Teléfono:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono_Sucursal)
+        </dd>
+
+        <dt>
+            Latitud:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitud)
+        </dd>
+
+        <dt>
+            Longitud:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitud)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

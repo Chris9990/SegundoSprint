@@ -1,0 +1,58 @@
+﻿@model Gestion.Models.Repartidores
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Repartidores</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Codigo Repartidor:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Repartidor)
+        </dd>
+
+        <dt>
+            CI:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CI)
+        </dd>
+
+        <dt>
+            Teléfono:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono_Repartidor)
+        </dd>
+
+        <dt>
+            Nombre:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Repartidor)
+        </dd>
+
+        <dt>
+            Placa:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Placa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Cod_Repartidor  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,88 @@
+﻿@model Gestion.Models.Productos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Productos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Codigo de Producto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Producto)
+        </dd>
+
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Producto)
+        </dd>
+
+        <dt>
+            Marca
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Marca)
+        </dd>
+
+        <dt>
+            Información
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Informacion)
+        </dd>
+
+        <dt>
+            Precio de Venta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio_Venta)
+        </dd>
+
+        <dt>
+            Oferta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oferta)
+        </dd>
+
+        <dt>
+            Codigo de SubCategoria
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_SubCategoria)
+        </dd>
+
+        <dt>
+            URL
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URLVideo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
