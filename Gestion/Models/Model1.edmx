@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -178,9 +178,9 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
         </EntityType>
         <EntityType Name="Repartidores">
           <Key>
-            <PropertyRef Name="Cod_Repartidor" />
+            <PropertyRef Name="Cod_Repartidores" />
           </Key>
-          <Property Name="Cod_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Repartidores" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CI" Type="int" Nullable="false" />
           <Property Name="Telefono_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Nombre_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
@@ -335,12 +335,12 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Envio_Repartidores">
+        <Association Name="FK_Envio_Repartidores1">
           <End Role="Repartidores" Type="Self.Repartidores" Multiplicity="1" />
           <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Repartidores">
-              <PropertyRef Name="Cod_Repartidor" />
+              <PropertyRef Name="Cod_Repartidores" />
             </Principal>
             <Dependent Role="Envio">
               <PropertyRef Name="Cod_Repartidores" />
@@ -542,7 +542,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Pedido de Venta" EntitySet="Pedido de Venta" />
             <End Role="Envio" EntitySet="Envio" />
           </AssociationSet>
-          <AssociationSet Name="FK_Envio_Repartidores" Association="Self.FK_Envio_Repartidores">
+          <AssociationSet Name="FK_Envio_Repartidores1" Association="Self.FK_Envio_Repartidores1">
             <End Role="Repartidores" EntitySet="Repartidores" />
             <End Role="Envio" EntitySet="Envio" />
           </AssociationSet>
@@ -591,7 +591,8 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Venta-Estado" EntitySet="Venta-Estado" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -707,7 +708,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Property Name="Cod_Sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cod_Repartidores" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Envio_Pedido_de_Venta" FromRole="Envio" ToRole="Pedido_de_Venta" />
-          <NavigationProperty Name="Repartidores" Relationship="Self.FK_Envio_Repartidores" FromRole="Envio" ToRole="Repartidores" />
+          <NavigationProperty Name="Repartidores" Relationship="Self.FK_Envio_Repartidores1" FromRole="Envio" ToRole="Repartidores" />
           <NavigationProperty Name="Sucursales" Relationship="Self.FK_Envio_Sucursales" FromRole="Envio" ToRole="Sucursales" />
           <NavigationProperty Name="Venta_Estado" Relationship="Self.FK_Envio_Venta_Estado1" FromRole="Envio" ToRole="Venta_Estado" />
         </EntityType>
@@ -774,14 +775,14 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
         </EntityType>
         <EntityType Name="Repartidores">
           <Key>
-            <PropertyRef Name="Cod_Repartidor" />
+            <PropertyRef Name="Cod_Repartidores" />
           </Key>
-          <Property Name="Cod_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Repartidores" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CI" Type="Int32" Nullable="false" />
           <Property Name="Telefono_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nombre_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Repartidores" FromRole="Repartidores" ToRole="Envio" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Repartidores1" FromRole="Repartidores" ToRole="Envio" />
         </EntityType>
         <EntityType Name="SubCategoria">
           <Key>
@@ -949,12 +950,12 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Envio_Repartidores">
+        <Association Name="FK_Envio_Repartidores1">
           <End Role="Repartidores" Type="Self.Repartidores" Multiplicity="1" />
           <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Repartidores">
-              <PropertyRef Name="Cod_Repartidor" />
+              <PropertyRef Name="Cod_Repartidores" />
             </Principal>
             <Dependent Role="Envio">
               <PropertyRef Name="Cod_Repartidores" />
@@ -1128,7 +1129,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
             <End Role="Envio" EntitySet="Envio" />
           </AssociationSet>
-          <AssociationSet Name="FK_Envio_Repartidores" Association="Self.FK_Envio_Repartidores">
+          <AssociationSet Name="FK_Envio_Repartidores1" Association="Self.FK_Envio_Repartidores1">
             <End Role="Repartidores" EntitySet="Repartidores" />
             <End Role="Envio" EntitySet="Envio" />
           </AssociationSet>
@@ -1343,7 +1344,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <EntitySetMapping Name="Repartidores">
             <EntityTypeMapping TypeName="DbModel.Repartidores">
               <MappingFragment StoreEntitySet="Repartidores">
-                <ScalarProperty Name="Cod_Repartidor" ColumnName="Cod_Repartidor" />
+                <ScalarProperty Name="Cod_Repartidores" ColumnName="Cod_Repartidores" />
                 <ScalarProperty Name="CI" ColumnName="CI" />
                 <ScalarProperty Name="Telefono_Repartidor" ColumnName="Telefono_Repartidor" />
                 <ScalarProperty Name="Nombre_Repartidor" ColumnName="Nombre_Repartidor" />

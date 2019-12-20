@@ -20,7 +20,7 @@ namespace Gestion.Models
             this.Envio = new HashSet<Envio>();
         }
     
-        public string Cod_Repartidor { get; set; }
+        public string Cod_Repartidores { get; set; }
         public int CI { get; set; }
         public string Telefono_Repartidor { get; set; }
         public string Nombre_Repartidor { get; set; }

@@ -25,7 +25,7 @@ namespace Gestion.Controllers
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
+                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidores == id).FirstOrDefault());
             }
         }
 
@@ -61,7 +61,7 @@ namespace Gestion.Controllers
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
+                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidores == id).FirstOrDefault());
             }
         }
 
@@ -90,7 +90,7 @@ namespace Gestion.Controllers
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
+                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidores == id).FirstOrDefault());
             }
         }
 
@@ -102,7 +102,7 @@ namespace Gestion.Controllers
             {
                 using (DbModels dbModel = new DbModels())
                 {
-                    Repartidores repartidor = dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault();
+                    Repartidores repartidor = dbModel.Repartidores.Where(x => x.Cod_Repartidores == id).FirstOrDefault();
                     dbModel.Repartidores.Remove(repartidor);
                     dbModel.SaveChanges();
                 }

@@ -4,29 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e9eab4f379c8461b9e4da486c710ed2c" Name="Diagram1">
+      <Diagram DiagramId="e5042b3f714342168df8ff12b5ae360c" Name="Diagram1">
         <EntityTypeShape EntityType="DbModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.AspNetRoles" Width="1.5" PointX="10.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.AspNetUserClaims" Width="1.5" PointX="15.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.AspNetUserLogins" Width="1.5" PointX="15.25" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.AspNetUsers" Width="1.5" PointX="13" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Categorias" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Clientes" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Compras" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Detalle_de_Compras" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Envio" Width="1.5" PointX="12.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Estado" Width="1.5" PointX="13.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Marcas" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Pedido_de_Venta" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Productos" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Proveedores" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Repartidores" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.SubCategoria" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Sucursales" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.sysdiagrams" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Categorias" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Clientes" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Compras" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Detalle_de_Compras" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Envio" Width="1.5" PointX="12.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Estado" Width="1.5" PointX="13.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Marcas" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Pedido_de_Venta" Width="1.5" PointX="10.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Productos" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Proveedores" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Repartidores" Width="1.5" PointX="10.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.SubCategoria" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Sucursales" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.Usuarios" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Venta_Estado" Width="1.5" PointX="15.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Producto_Sucursal" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Venta_Estado" Width="1.5" PointX="15.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Producto_Sucursal" Width="1.5" PointX="7.5" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="DbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK_SubCategoria_Categorias" ManuallyRouted="false" />
@@ -35,7 +35,7 @@
         <AssociationConnector Association="DbModel.FK_Detalle_de_Compras_Compras1" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK_Detalle_de_Compras_Productos" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK_Envio_Pedido_de_Venta" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Envio_Repartidores" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Envio_Repartidores1" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK_Envio_Sucursales" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK_Envio_Venta_Estado1" ManuallyRouted="false" />
         <AssociationConnector Association="DbModel.FK_Venta_Estado_Estado" ManuallyRouted="false" />
