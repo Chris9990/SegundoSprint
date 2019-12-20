@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Gestion.Controllers
 {
+    [Authorize]
     public class VentasController : Controller
     {
         // GET: Ventas

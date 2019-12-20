@@ -12,15 +12,9 @@ namespace Gestion.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Detalle_de_Compras
+    public partial class Usuarios
     {
-        public string Cod_Compra { get; set; }
-        public string Cod_Proveedor { get; set; }
-        public string Cod_Producto { get; set; }
-        public int Precio_Compra { get; set; }
-        public int Cantidad { get; set; }
-    
-        public virtual Compras Compras { get; set; }
-        public virtual Productos Productos { get; set; }
+        public string Usuario { get; set; }
+        public string Password { get; set; }
     }
 }

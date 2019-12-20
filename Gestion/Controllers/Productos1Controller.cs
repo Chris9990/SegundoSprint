@@ -27,6 +27,7 @@ namespace Gestion.Controllers
         public IHttpActionResult GetProductos(string id)
         {
             Productos productos = db.Productos.Find(id);
+            
             if (productos == null)
             {
                 return NotFound();

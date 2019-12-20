@@ -12,50 +12,44 @@ using Gestion.Models;
 
 namespace Gestion.Controllers
 {
-    
-    public class Marcas1Controller : ApiController
+    public class Compras1Controller : ApiController
     {
         private DbModels db = new DbModels();
 
-        // GET: api/Marcas1
-        public IQueryable<Marcas> GetMarcas()
+        // GET: api/Compras1
+        public IQueryable<Compras> GetCompras()
         {
-            return db.Marcas;
+            return db.Compras;
         }
 
-        // GET: api/Marcas1/5
-        [ResponseType(typeof(Marcas))]
-        public IHttpActionResult GetMarcas(string id)
+        // GET: api/Compras1/5
+        [ResponseType(typeof(Compras))]
+        public IHttpActionResult GetCompras(string id)
         {
-            Marcas marcas = db.Marcas.Find(id);
-            if (marcas == null)
+            Compras compras = db.Compras.Find(id);
+            if (compras == null)
             {
                 return NotFound();
             }
-            mar m = new mar();
 
-            m.Cod_Marca = marcas.Cod_Marca;
-            m.Nombre_Marca = marcas.Nombre_Marca;
-
-            
-            return Ok(m);
+            return Ok(compras);
         }
 
-        // PUT: api/Marcas1/5
+        // PUT: api/Compras1/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMarcas(string id, Marcas marcas)
+        public IHttpActionResult PutCompras(string id, Compras compras)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != marcas.Cod_Marca)
+            if (id != compras.Cod_Compra)
             {
                 return BadRequest();
             }
 
-            db.Entry(marcas).State = EntityState.Modified;
+            db.Entry(compras).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +57,7 @@ namespace Gestion.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MarcasExists(id))
+                if (!ComprasExists(id))
                 {
                     return NotFound();
                 }
@@ -76,16 +70,16 @@ namespace Gestion.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Marcas1
-        [ResponseType(typeof(Marcas))]
-        public IHttpActionResult PostMarcas(Marcas marcas)
+        // POST: api/Compras1
+        [ResponseType(typeof(Compras))]
+        public IHttpActionResult PostCompras(Compras compras)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Marcas.Add(marcas);
+            db.Compras.Add(compras);
 
             try
             {
@@ -93,7 +87,7 @@ namespace Gestion.Controllers
             }
             catch (DbUpdateException)
             {
-                if (MarcasExists(marcas.Cod_Marca))
+                if (ComprasExists(compras.Cod_Compra))
                 {
                     return Conflict();
                 }
@@ -103,23 +97,23 @@ namespace Gestion.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = marcas.Cod_Marca }, marcas);
+            return CreatedAtRoute("DefaultApi", new { id = compras.Cod_Compra }, compras);
         }
 
-        // DELETE: api/Marcas1/5
-        [ResponseType(typeof(Marcas))]
-        public IHttpActionResult DeleteMarcas(string id)
+        // DELETE: api/Compras1/5
+        [ResponseType(typeof(Compras))]
+        public IHttpActionResult DeleteCompras(string id)
         {
-            Marcas marcas = db.Marcas.Find(id);
-            if (marcas == null)
+            Compras compras = db.Compras.Find(id);
+            if (compras == null)
             {
                 return NotFound();
             }
 
-            db.Marcas.Remove(marcas);
+            db.Compras.Remove(compras);
             db.SaveChanges();
 
-            return Ok(marcas);
+            return Ok(compras);
         }
 
         protected override void Dispose(bool disposing)
@@ -131,15 +125,9 @@ namespace Gestion.Controllers
             base.Dispose(disposing);
         }
 
-        private bool MarcasExists(string id)
+        private bool ComprasExists(string id)
         {
-            return db.Marcas.Count(e => e.Cod_Marca == id) > 0;
+            return db.Compras.Count(e => e.Cod_Compra == id) > 0;
         }
-        private class mar
-        {
-            public string Cod_Marca { get; set; }
-            public string Nombre_Marca { get; set; }
-        }
-
     }
 }

@@ -11,7 +11,9 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Categorias
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +21,14 @@ namespace Gestion.Models
         {
             this.SubCategoria = new HashSet<SubCategoria>();
         }
-    
+        [Required]
+        [DisplayName("Código Categoria:")]
         public string Cod_Categoria { get; set; }
+        [Required]
+        [DisplayName("Categoria:")]
         public string Nombre_Categoria { get; set; }
+        [Required]
+        [DisplayName("Descripción:")]
         public string Descripcion_Categoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
