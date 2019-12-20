@@ -35,11 +35,11 @@ namespace Gestion.Controllers
             ped x = new ped();
             x.Cod_Pedido = pedido_de_Venta.Cod_Pedido;
             x.Cod_Producto = pedido_de_Venta.Cod_Producto;
-            x.Cod_Sucursal = pedido_de_Venta.Cod_Sucursal;
-            x.Cod_Venta = pedido_de_Venta.Cod_Venta;
+            //x.Cod_Sucursal = pedido_de_Venta.Cod_Sucursal;
+           // x.Cod_Venta = pedido_de_Venta.Cod_Venta;
             x.Cantidad = pedido_de_Venta.Cantidad;
-            x.Cod_Repartidor = pedido_de_Venta.Cod_Repartidor;
-            x.FechaHora_Pedido = pedido_de_Venta.FechaHora_Pedido;
+            x.Cod_Repartidor = pedido_de_Venta.Cod_Cliente;
+            x.Direccion = pedido_de_Venta.Direccion;
 
 
 
@@ -150,7 +150,7 @@ namespace Gestion.Controllers
             public string Cod_Venta { get; set; }
             public int Cantidad { get; set; }
             public string Cod_Repartidor { get; set; }
-            public System.DateTime FechaHora_Pedido { get; set; }
+            public string Direccion { get; set; }
         }
     }
 }

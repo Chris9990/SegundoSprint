@@ -12,11 +12,9 @@ namespace Gestion.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class C__MigrationHistory
+    public partial class Usuarios
     {
-        public string MigrationId { get; set; }
-        public string ContextKey { get; set; }
-        public byte[] Model { get; set; }
-        public string ProductVersion { get; set; }
+        public string Usuario { get; set; }
+        public string Password { get; set; }
     }
 }

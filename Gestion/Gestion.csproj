@@ -186,15 +186,15 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
-    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
+    <Compile Include="Controllers\DatosSucursal1Controller.cs" />
     <Compile Include="Controllers\Detalle_de_ComprasController.cs" />
+    <Compile Include="Controllers\EnviosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Marcas1Controller.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\Metodo_de_PagoController.cs" />
     <Compile Include="Controllers\Pedido_de_Venta1Controller.cs" />
     <Compile Include="Controllers\Pedido_de_VentaController.cs" />
     <Compile Include="Controllers\Productos1Controller.cs" />
@@ -205,7 +205,6 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SubCategoriaController.cs" />
     <Compile Include="Controllers\SucursalesController.cs" />
-    <Compile Include="Controllers\Tarjeta_CreditoController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -253,7 +252,10 @@
     <Compile Include="Models\Detalle_de_Compras.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entrega.cs">
+    <Compile Include="Models\Envio.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estado.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -261,13 +263,7 @@
     <Compile Include="Models\Marcas.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Metodo_de_Pago.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Pedido_de_Venta.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pedido_de_VentaAPI.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Productos.cs">
@@ -291,10 +287,10 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Tarjeta_Credito.cs">
+    <Compile Include="Models\Usuarios.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ventas.cs">
+    <Compile Include="Models\Venta_Estado.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

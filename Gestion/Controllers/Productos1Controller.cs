@@ -16,10 +16,10 @@ namespace Gestion.Controllers
     {
         private DbModels db = new DbModels();
 
-        // GET: api/Productos1
+        // GET: api/Productos1                              
         public IQueryable<Productos> GetProductos()
-        {
-            return db.Productos;
+        {   
+            return db.Productos; 
         }
 
         // GET: api/Productos1/5

@@ -12,22 +12,22 @@ namespace Gestion.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Proveedores
+    public partial class Venta_Estado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Proveedores()
+        public Venta_Estado()
         {
-            this.Compras = new HashSet<Compras>();
+            this.Envio = new HashSet<Envio>();
         }
     
-        public string Cod_Prov { get; set; }
-        public string Empresa { get; set; }
-        public string Nombre_Prov { get; set; }
-        public string Apellido_Prov { get; set; }
-        public int Telefono_Prov { get; set; }
-        public string Direccion_Prov { get; set; }
+        public int Cod_Estado { get; set; }
+        public System.DateTime Fecha_Venta { get; set; }
+        public string Cod_Pedido { get; set; }
+        public int Cod_Ventas_Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Compras> Compras { get; set; }
+        public virtual ICollection<Envio> Envio { get; set; }
+        public virtual Estado Estado { get; set; }
+        public virtual Pedido_de_Venta Pedido_de_Venta { get; set; }
     }
 }
