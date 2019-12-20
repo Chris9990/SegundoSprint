@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Gestion.Models;
@@ -111,14 +113,30 @@ namespace Gestion.Controllers
                 x.Cantidad = pedido_de_Venta.Cantidad;
                 x.Cod_Cliente = pedido_de_Venta.Cod_Cliente;
                 x.Direccion = pedido_de_Venta.Direccion;
-                string URI = "https://us-central1-supermercado36235.cloudfunctions.net/app";
+                /*string URI = "https://supermercado36235.firebaseio.com/Pedidos";
                 string myParameters = "Cod_Pedido=" + x.Cod_Pedido + "& Cod_Producto=" + x.Cod_Producto + "& Cantidad=" + x.Cantidad + "& Cod_Cliente=" + x.Cod_Cliente + "& Direccion=" + x.Direccion;
 
                 using (WebClient wc = new WebClient())
                 {
                     wc.Headers[HttpRequestHeader.ContentType] = "application/json";
                     string HtmlResult = wc.UploadString(URI, myParameters);
-                }
+                }*/
+                var json = Newtonsoft.Json.JsonConvert.SerializeObject(new
+                {
+                    Cod_Pedido = x.Cod_Pedido,
+                    Cod_Producto = x.Cod_Producto,
+                    Cantidad = x.Cantidad,
+                    Cod_Cliente = x.Cod_Cliente,
+                    Direccion = x.Direccion
+                });
+                var request = WebRequest.CreateHttp("https://supermercado36235.firebaseio.com/Pedidos.json");
+                request.Method = "POST";
+                request.ContentType = "application/json";
+                var buffer = Encoding.UTF8.GetBytes(json);
+                request.ContentLength = buffer.Length;
+                request.GetRequestStream().Write(buffer, 0, buffer.Length);
+                var response = request.GetResponse();
+                json = (new StreamReader(response.GetResponseStream())).ReadToEnd();
             }
             catch (DbUpdateException)
             {

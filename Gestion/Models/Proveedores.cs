@@ -11,9 +11,7 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Proveedores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,23 +19,12 @@ namespace Gestion.Models
         {
             this.Compras = new HashSet<Compras>();
         }
-        [Required]
-        [DisplayName("Código Proveedor:")]
+    
         public string Cod_Prov { get; set; }
-        [Required]
-        [DisplayName("Empresa:")]
         public string Empresa { get; set; }
-        [Required]
-        [DisplayName("Nombre Proveedor:")]
         public string Nombre_Prov { get; set; }
-        [Required]
-        [DisplayName("Apellido:")]
         public string Apellido_Prov { get; set; }
-        [Required]
-        [DisplayName("Teléfono:")]
         public int Telefono_Prov { get; set; }
-        [Required]
-        [DisplayName("Dirección:")]
         public string Direccion_Prov { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

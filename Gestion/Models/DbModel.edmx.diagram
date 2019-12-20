@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="DbModel.AspNetUsers" Width="1.5" PointX="13" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.Categorias" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.Clientes" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Compras" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Compras" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.Detalle_de_Compras" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.Envio" Width="1.5" PointX="12.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="DbModel.Estado" Width="1.5" PointX="13.5" PointY="3.625" IsExpanded="true" />
