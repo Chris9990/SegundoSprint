@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -99,7 +99,6 @@
             <PropertyRef Name="Cod_Compra" />
           </Key>
           <Property Name="Cod_Compra" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cod_Proveedor" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Precio_Compra" Type="int" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
@@ -220,8 +219,8 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Key>
             <PropertyRef Name="Usuario" />
           </Key>
-          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Venta-Estado">
           <Key>
@@ -592,8 +591,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Venta-Estado" EntitySet="Venta-Estado" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -693,7 +691,6 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <PropertyRef Name="Cod_Compra" />
           </Key>
           <Property Name="Cod_Compra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cod_Proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cod_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Precio_Compra" Type="Int32" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
@@ -823,8 +820,8 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Key>
             <PropertyRef Name="Usuario" />
           </Key>
-          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Venta_Estado">
           <Key>
@@ -1272,7 +1269,6 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <EntityTypeMapping TypeName="DbModel.Detalle_de_Compras">
               <MappingFragment StoreEntitySet="Detalle de Compras">
                 <ScalarProperty Name="Cod_Compra" ColumnName="Cod_Compra" />
-                <ScalarProperty Name="Cod_Proveedor" ColumnName="Cod_Proveedor" />
                 <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
                 <ScalarProperty Name="Precio_Compra" ColumnName="Precio_Compra" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
