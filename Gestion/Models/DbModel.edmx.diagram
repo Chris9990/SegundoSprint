@@ -4,49 +4,47 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cbc6503a06fd482a90488eba606c4c6b" Name="Diagram1">
-        <EntityTypeShape EntityType="GestionModel.C__MigrationHistory" Width="1.5" PointX="9.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.AspNetRoles" Width="1.5" PointX="10.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.AspNetUserClaims" Width="1.5" PointX="15.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.AspNetUserLogins" Width="1.5" PointX="15.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.AspNetUsers" Width="1.5" PointX="13" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Categorias" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Clientes" Width="1.5" PointX="6" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Compras" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Detalle_de_Compras" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Entrega" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Marcas" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Metodo_de_Pago" Width="1.5" PointX="3.75" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Pedido_de_Venta" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Productos" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Proveedores" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Repartidores" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.SubCategoria" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Sucursales" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Tarjeta_Credito" Width="1.5" PointX="8.25" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Ventas" Width="1.5" PointX="8.25" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionModel.Producto_Sucursal" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
-        <AssociationConnector Association="GestionModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_SubCategoria_Categorias" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Clientes_Metodo_de_PAgo" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Ventas_Clientes" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Compras_Proveedores" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Detalle_de_Compras_Compras" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Detalle_de_Compras_Productos" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Pedido_de_Venta_Entrega" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Productos_Marcas" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Pedido_de_Venta_Productos" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Pedido_de_Venta_Repartidores" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Pedido_de_Venta_Sucursales" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Pedido_de_Venta_Ventas" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Producto_Sucursal_Productos" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Productos_SubCategoria" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.FK_Producto_Sucursal_Sucursales" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.AspNetUserRoles" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionModel.Tarjeta_Cliente" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="GestionModel.Pedido_de_VentaAPI" Width="1.5" PointX="2.625" PointY="12" />
+      <Diagram DiagramId="9c604635f6ba41448496f44554894182" Name="Diagram1">
+        <EntityTypeShape EntityType="DbModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.AspNetRoles" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.AspNetUserClaims" Width="1.5" PointX="14.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.AspNetUserLogins" Width="1.5" PointX="14.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.AspNetUsers" Width="1.5" PointX="12" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Categorias" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Clientes" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Compras" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Detalle_de_Compras" Width="1.5" PointX="7.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Envio" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Estado" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Marcas" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Pedido_de_Venta" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Productos" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Proveedores" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Repartidores" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.SubCategoria" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Sucursales" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Venta_Estado" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Producto_Sucursal" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbModel.Usuarios" Width="1.5" PointX="9.75" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="DbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_SubCategoria_Categorias" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Pedido_de_Venta_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Compras_Proveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Detalle_de_Compras_Compras1" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Detalle_de_Compras_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Envio_Pedido_de_Venta" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Envio_Repartidores" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Envio_Sucursales" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Envio_Venta_Estado1" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Venta_Estado_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Productos_Marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Veta_Estado_Pedido_de_Venta" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Producto_Sucursal_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Productos_SubCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.FK_Producto_Sucursal_Sucursales" ManuallyRouted="false" />
+        <AssociationConnector Association="DbModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

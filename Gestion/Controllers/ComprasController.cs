@@ -6,8 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Gestion.Controllers
 {
+    [Authorize]
     public class ComprasController : Controller
     {
         // GET: Compras
@@ -31,8 +33,17 @@ namespace Gestion.Controllers
         // GET: Compras/Create
         public ActionResult Create()
         {
-            return View();
+            using (DbModels dbModel = new DbModels())
+            {
+                ViewBag.Cod_Prov = new SelectList(dbModel.Proveedores, "Cod_Prov", "Empresa").ToList();
+                return View();
+            }
         }
+ 
+
+
+
+
 
         // POST: Compras/Create
         [HttpPost]
@@ -46,7 +57,7 @@ namespace Gestion.Controllers
                     dbModels.SaveChanges();
 
                 }
-
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -54,6 +65,11 @@ namespace Gestion.Controllers
                 return View();
             }
         }
+
+
+
+
+
 
         // GET: Compras/Edit/5
         public ActionResult Edit(string id)

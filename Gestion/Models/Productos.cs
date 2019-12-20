@@ -11,17 +11,16 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Productos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Productos()
         {
-               this.Detalle_de_Compras = new HashSet<Detalle_de_Compras>();
-             this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
+            this.Detalle_de_Compras = new HashSet<Detalle_de_Compras>();
             this.Producto_Sucursal = new HashSet<Producto_Sucursal>();
         }
-
+    
         public string Cod_Producto { get; set; }
         public string Nombre_Producto { get; set; }
         public string Cod_Marca { get; set; }
@@ -30,14 +29,11 @@ namespace Gestion.Models
         public string Oferta { get; set; }
         public string Cod_SubCategoria { get; set; }
         public string URLVideo { get; set; }
-    
-
+        public string stock { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_de_Compras> Detalle_de_Compras { get; set; }
         public virtual Marcas Marcas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido_de_Venta> Pedido_de_Venta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto_Sucursal> Producto_Sucursal { get; set; }
         public virtual SubCategoria SubCategoria { get; set; }

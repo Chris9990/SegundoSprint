@@ -147,7 +147,7 @@ namespace Gestion.Controllers
             public string Cod_Pedido { get; set; }
             public string Cod_Producto { get; set; }
             public string Cod_Sucursal { get; set; }
-            public string Cod_Venta { get; set; }
+            public int Cod_Venta { get; set; }
             public int Cantidad { get; set; }
             public string Cod_Repartidor { get; set; }
             public System.DateTime FechaHora_Pedido { get; set; }

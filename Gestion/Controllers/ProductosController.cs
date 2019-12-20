@@ -29,7 +29,7 @@ namespace Gestion.Controllers
         }
 
 
-        // GET: Productos/Create
+        //*** GET: Productos/Create
         public ActionResult Create()
         {
             using (DbModels dbModel = new DbModels())
@@ -42,7 +42,7 @@ namespace Gestion.Controllers
             
         }
 
-        // POST: Productos/Create
+        // *** POST: Productos/Create
         [HttpPost]
         public ActionResult Create(Productos producto)
         {

@@ -18,7 +18,6 @@ namespace Gestion.Controllers
                 return View(dbModel.Detalle_de_Compras.ToList());
             }
         }
-
         // GET: Detalle_de_Compras/Details/5
         public ActionResult Details(string id)
         {
@@ -27,19 +26,18 @@ namespace Gestion.Controllers
                 return View(dbModel.Detalle_de_Compras.Where(x => x.Cod_Compra == id).FirstOrDefault());
             }
         }
-
-        // GET: Detalle_de_Compras/Create
+        //*** GET: Detalle_de_Compras/Create
         public ActionResult Create()
         {
             using (DbModels dbModel = new DbModels())
             {
+                ViewBag.Cod_Proveedor = new SelectList(dbModel.Detalle_de_Compras, "Cod_Proveedor", "Empresa").ToList();
                 ViewBag.Cod_Producto = new SelectList(dbModel.Productos, "Cod_Producto", "Nombre_Producto").ToList();
 
                 return View();
             }
         }
-
-        // POST: Detalle_de_Compras/Create
+        //*** POST: Detalle_de_Compras/Create
         [HttpPost]
         public ActionResult Create(Detalle_de_Compras detalle)
         {
@@ -49,7 +47,6 @@ namespace Gestion.Controllers
                 {
                     dbModels.Detalle_de_Compras.Add(detalle);
                     dbModels.SaveChanges();
-
                 }
 
                 return RedirectToAction("Index");

@@ -34,9 +34,9 @@ namespace Gestion.Models
         public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Compras> Compras { get; set; }
         public virtual DbSet<Detalle_de_Compras> Detalle_de_Compras { get; set; }
-        public virtual DbSet<Entrega> Entrega { get; set; }
+        public virtual DbSet<Envio> Envio { get; set; }
+        public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Marcas> Marcas { get; set; }
-        public virtual DbSet<Metodo_de_Pago> Metodo_de_Pago { get; set; }
         public virtual DbSet<Pedido_de_Venta> Pedido_de_Venta { get; set; }
         public virtual DbSet<Productos> Productos { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
@@ -44,9 +44,8 @@ namespace Gestion.Models
         public virtual DbSet<SubCategoria> SubCategoria { get; set; }
         public virtual DbSet<Sucursales> Sucursales { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Tarjeta_Credito> Tarjeta_Credito { get; set; }
-        public virtual DbSet<Ventas> Ventas { get; set; }
+        public virtual DbSet<Venta_Estado> Venta_Estado { get; set; }
         public virtual DbSet<Producto_Sucursal> Producto_Sucursal { get; set; }
-        public virtual DbSet<Pedido_de_VentaAPI> Pedido_de_VentaAPI { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

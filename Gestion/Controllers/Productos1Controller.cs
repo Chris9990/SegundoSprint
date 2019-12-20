@@ -58,6 +58,7 @@ namespace Gestion.Controllers
                 return BadRequest();
             }
 
+
             db.Entry(productos).State = EntityState.Modified;
 
             try

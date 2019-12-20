@@ -21,7 +21,9 @@ namespace Gestion.Controllers
         {
             return db.Marcas;
         }
-
+ 
+         
+         
         // GET: api/Marcas1/5
         [ResponseType(typeof(Marcas))]
         public IHttpActionResult GetMarcas(string id)

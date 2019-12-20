@@ -9,37 +9,57 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Cod_Compra)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Cod_Proveedor)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Cod_Producto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio_Compra)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Cantidad)
         </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cod_Compra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cod_Producto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cantidad)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cod_Compra)
+    </td>
+    <th>
+        @Html.DisplayNameFor(model => model.Cod_Proveedor)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Cod_Producto)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Precio_Compra)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Cantidad)
+    </th>
+
+
+    <th></th>
+
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
 }
 
 </table>

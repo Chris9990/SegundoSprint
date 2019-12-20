@@ -6,9 +6,9 @@ using System.Net.Http;
 using System.Web.Http;
 using Gestion.Models;
 
-namespace Gestion.Controllers
-{
-    public class Pedido_de_VentaController : ApiController
+namespace Gestion.Controllers { }
+ /*{
+   public class Pedido_de_VentaController : ApiController
     {
         // GET: api/Pedido_de_Venta
         public IEnumerable<Pedido_de_VentaAPI> Get()
@@ -77,3 +77,4 @@ namespace Gestion.Controllers
         //}
     }
 }
+*/

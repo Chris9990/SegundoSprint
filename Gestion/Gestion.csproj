@@ -198,11 +198,9 @@
     <Compile Include="Controllers\Pedido_de_Venta1Controller.cs" />
     <Compile Include="Controllers\Pedido_de_VentaController.cs" />
     <Compile Include="Controllers\Productos1Controller.cs" />
-    <Compile Include="Controllers\ProductosAPIController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\RepartidoresController.cs" />
-    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SubCategoriaController.cs" />
     <Compile Include="Controllers\SucursalesController.cs" />
     <Compile Include="Controllers\Tarjeta_CreditoController.cs" />
@@ -253,7 +251,10 @@
     <Compile Include="Models\Detalle_de_Compras.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entrega.cs">
+    <Compile Include="Models\Envio.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estado.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -261,13 +262,7 @@
     <Compile Include="Models\Marcas.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Metodo_de_Pago.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Pedido_de_Venta.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pedido_de_VentaAPI.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Productos.cs">
@@ -291,10 +286,10 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Tarjeta_Credito.cs">
+    <Compile Include="Models\Usuarios.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ventas.cs">
+    <Compile Include="Models\Venta_Estado.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -328,6 +323,7 @@
     <Content Include="Models\DbModel.edmx.diagram">
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -429,7 +425,11 @@
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Compras\Index.cshtml" />
     <Content Include="Views\Detalle_de_Compras\Index.cshtml" />
+    <Content Include="Views\Compras\Create.cshtml" />
     <Content Include="Views\Detalle_de_Compras\Create.cshtml" />
+    <None Include="Web.CustomProfile.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

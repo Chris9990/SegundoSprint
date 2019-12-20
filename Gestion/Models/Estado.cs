@@ -12,21 +12,18 @@ namespace Gestion.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Repartidores
+    public partial class Estado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Repartidores()
+        public Estado()
         {
-            this.Envio = new HashSet<Envio>();
+            this.Venta_Estado = new HashSet<Venta_Estado>();
         }
     
-        public string Cod_Repartidor { get; set; }
-        public int CI { get; set; }
-        public string Telefono_Repartidor { get; set; }
-        public string Nombre_Repartidor { get; set; }
-        public string Placa { get; set; }
+        public int Cod_Estado { get; set; }
+        public string Descripcion_Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Envio> Envio { get; set; }
+        public virtual ICollection<Venta_Estado> Venta_Estado { get; set; }
     }
 }
