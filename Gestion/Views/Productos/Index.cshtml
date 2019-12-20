@@ -12,61 +12,58 @@
 <table class="table">
     <tr>
         <th>
-            CodProducto
+            @Html.DisplayNameFor(model => model.Nombre_Producto)
         </th>
         <th>
-            Nombre
+            @Html.DisplayNameFor(model => model.Informacion)
         </th>
         <th>
-            CodMarca
+            @Html.DisplayNameFor(model => model.Precio_Venta)
         </th>
         <th>
-            Informacion
+            @Html.DisplayNameFor(model => model.Oferta)
         </th>
         <th>
-            Precio
+            @Html.DisplayNameFor(model => model.stock)
         </th>
         <th>
-            Oferta
+            @Html.DisplayNameFor(model => model.Marcas.Nombre_Marca)
         </th>
         <th>
-            SubCategoria
+            @Html.DisplayNameFor(model => model.SubCategoria.Nombre_SubCategoria)
         </th>
-
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cod_Producto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre_Producto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cod_Marca)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Informacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio_Venta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Oferta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cod_SubCategoria)
-            </td>
-
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Cod_Producto }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Cod_Producto }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Cod_Producto })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre_Producto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Informacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio_Venta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oferta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marcas.Nombre_Marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubCategoria.Nombre_SubCategoria)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Cod_Producto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Cod_Producto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Cod_Producto })
+        </td>
+    </tr>
+}
 
 </table>

@@ -11,27 +11,45 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Productos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Productos()
         {
-               this.Detalle_de_Compras = new HashSet<Detalle_de_Compras>();
-             this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
+            this.Detalle_de_Compras = new HashSet<Detalle_de_Compras>();
+            this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
             this.Producto_Sucursal = new HashSet<Producto_Sucursal>();
         }
-
+        [Required]
+        [DisplayName("Código Producto:")]
         public string Cod_Producto { get; set; }
+        [Required]
+        [DisplayName("Nombre:")]
         public string Nombre_Producto { get; set; }
+        [Required]
+        [DisplayName("Marca:")]
         public string Cod_Marca { get; set; }
+        [Required]
+        [DisplayName("Información:")]
         public string Informacion { get; set; }
+        [Required]
+        [DisplayName("Precio Venta:")]
         public int Precio_Venta { get; set; }
+        [Required]
+        [DisplayName("Oferta:")]
         public string Oferta { get; set; }
+        [Required]
+        [DisplayName("Código Subcategoria:")]
         public string Cod_SubCategoria { get; set; }
+        [Required]
+        [DisplayName("URL:")]
         public string URLVideo { get; set; }
-    
-
+        [Required]
+        [DisplayName("Stock:")]
+        public string stock { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_de_Compras> Detalle_de_Compras { get; set; }

@@ -8,6 +8,7 @@ using Gestion.Models;
 
 namespace Gestion.Controllers
 {
+    [Authorize]
     public class SucursalesController : Controller
     {
         // GET: Sucursales

@@ -17,7 +17,7 @@ namespace Gestion.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Repartidores()
         {
-            this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
+            this.Envio = new HashSet<Envio>();
         }
     
         public string Cod_Repartidor { get; set; }
@@ -27,6 +27,6 @@ namespace Gestion.Models
         public string Placa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido_de_Venta> Pedido_de_Venta { get; set; }
+        public virtual ICollection<Envio> Envio { get; set; }
     }
 }

@@ -17,22 +17,18 @@ namespace Gestion.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Clientes()
         {
-            this.Ventas = new HashSet<Ventas>();
-            this.Tarjeta_Credito = new HashSet<Tarjeta_Credito>();
+            this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
         }
     
-        public string Cod_Cliente { get; set; }
+        public string Cod_Clientes { get; set; }
         public string Nombre_Cliente { get; set; }
         public string Apellido_Cliente { get; set; }
         public string Direccion_Cliente { get; set; }
         public string Correo { get; set; }
         public int Telefono_Cliente { get; set; }
-        public string Cod_MPago { get; set; }
+        public int Password { get; set; }
     
-        public virtual Metodo_de_Pago Metodo_de_Pago { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ventas> Ventas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tarjeta_Credito> Tarjeta_Credito { get; set; }
+        public virtual ICollection<Pedido_de_Venta> Pedido_de_Venta { get; set; }
     }
 }

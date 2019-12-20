@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Gestion.Controllers
 {
+    [Authorize]
     public class ComprasController : Controller
     {
         // GET: Compras

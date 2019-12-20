@@ -35,16 +35,21 @@ namespace Gestion.Controllers
             ped x = new ped();
             x.Cod_Pedido = pedido_de_Venta.Cod_Pedido;
             x.Cod_Producto = pedido_de_Venta.Cod_Producto;
-            x.Cod_Sucursal = pedido_de_Venta.Cod_Sucursal;
-            x.Cod_Venta = pedido_de_Venta.Cod_Venta;
             x.Cantidad = pedido_de_Venta.Cantidad;
-            x.Cod_Repartidor = pedido_de_Venta.Cod_Repartidor;
-            x.FechaHora_Pedido = pedido_de_Venta.FechaHora_Pedido;
+            x.Cod_Cliente = pedido_de_Venta.Cod_Cliente;
+            x.Direccion = pedido_de_Venta.Direccion;
 
+            /*string URI = "http://www.myurl.com/post.php";
+            string myParameters = "param1="+x.Cod_Pedido+ "& param2=" + x.Cod_Producto + "&param3=" + x.Cantidad + "& param4="+ x.Cod_Cliente + "& param5="+ x.Direccion;
 
-
+            using (WebClient wc = new WebClient())
+            {
+                wc.Headers[HttpRequestHeader.ContentType] = "application/json";
+                string HtmlResult = wc.UploadString(URI, myParameters);
+            }*/
 
             return Ok(x);
+
         }
 
         // PUT: api/Pedido_de_Venta1/5
@@ -66,7 +71,9 @@ namespace Gestion.Controllers
             try
             {
                 db.SaveChanges();
+                
             }
+
             catch (DbUpdateConcurrencyException)
             {
                 if (!Pedido_de_VentaExists(id))
@@ -96,6 +103,24 @@ namespace Gestion.Controllers
             try
             {
                 db.SaveChanges();
+                /*
+                curl -v -H "Content-Type: application/json" -X POST \
+                -d '{"name":"your name","phonenumber":"111-111"}' https://supermercado36235.firebaseapp.com/servidor1
+                
+                ped x = new ped();
+                x.Cod_Pedido = pedido_de_Venta.Cod_Pedido;
+                x.Cod_Producto = pedido_de_Venta.Cod_Producto;
+                x.Cantidad = pedido_de_Venta.Cantidad;
+                x.Cod_Cliente = pedido_de_Venta.Cod_Cliente;
+                x.Direccion = pedido_de_Venta.Direccion;
+                string URI = "https://supermercado36235.firebaseapp.com/servidor1";
+                string myParameters = "param1=" + x.Cod_Pedido + "& param2=" + x.Cod_Producto + "&param3=" + x.Cantidad + "& param4=" + x.Cod_Cliente + "& param5=" + x.Direccion;
+
+                using (WebClient wc = new WebClient())
+                {
+                    wc.Headers[HttpRequestHeader.ContentType] = "application/json";
+                    string HtmlResult = wc.UploadString(URI, myParameters);
+                }*/
             }
             catch (DbUpdateException)
             {
@@ -146,11 +171,10 @@ namespace Gestion.Controllers
         {
             public string Cod_Pedido { get; set; }
             public string Cod_Producto { get; set; }
-            public string Cod_Sucursal { get; set; }
-            public string Cod_Venta { get; set; }
             public int Cantidad { get; set; }
-            public string Cod_Repartidor { get; set; }
-            public System.DateTime FechaHora_Pedido { get; set; }
+            public string Cod_Cliente { get; set; }
+            public string Direccion { get; set; }
+
         }
     }
 }

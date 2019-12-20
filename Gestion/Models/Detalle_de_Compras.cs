@@ -15,8 +15,10 @@ namespace Gestion.Models
     public partial class Detalle_de_Compras
     {
         public string Cod_Compra { get; set; }
+        public string Cod_Proveedor { get; set; }
         public string Cod_Producto { get; set; }
-        public Nullable<int> Cantidad { get; set; }
+        public int Precio_Compra { get; set; }
+        public int Cantidad { get; set; }
     
         public virtual Compras Compras { get; set; }
         public virtual Productos Productos { get; set; }
