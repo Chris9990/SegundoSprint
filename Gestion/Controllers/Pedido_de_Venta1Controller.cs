@@ -41,8 +41,13 @@ namespace Gestion.Controllers
             x.Cod_Repartidor = pedido_de_Venta.Cod_Repartidor;
             x.FechaHora_Pedido = pedido_de_Venta.FechaHora_Pedido;
 
+<<<<<<< Updated upstream
 
 
+=======
+            
+            return Ok(x);
+>>>>>>> Stashed changes
 
             return Ok(x);
         }
@@ -96,6 +101,33 @@ namespace Gestion.Controllers
             try
             {
                 db.SaveChanges();
+<<<<<<< Updated upstream
+=======
+                ped x = new ped();
+                x.Cod_Pedido = pedido_de_Venta.Cod_Pedido;
+                x.Cod_Producto = pedido_de_Venta.Cod_Producto;
+                x.Cantidad = pedido_de_Venta.Cantidad;
+                x.Cod_Cliente = pedido_de_Venta.Cod_Cliente;
+                x.Direccion = pedido_de_Venta.Direccion;
+
+                var json = Newtonsoft.Json.JsonConvert.SerializeObject(new
+                {
+                    Cod_Pedido = x.Cod_Pedido,
+                    Cod_Producto = x.Cod_Producto,
+                    Cantidad = x.Cantidad,
+                    Cod_Cliente = x.Cod_Cliente,
+                    Direccion = x.Direccion
+                });
+                var request = WebRequest.CreateHttp("https://supermercado36235.firebaseio.com/Pedidos.json");
+                request.Method = "POST";
+                request.ContentType = "application/json";
+                var buffer = Encoding.UTF8.GetBytes(json);
+                request.ContentLength = buffer.Length;
+                request.GetRequestStream().Write(buffer, 0, buffer.Length);
+                var response = request.GetResponse();
+                json = (new StreamReader(response.GetResponseStream())).ReadToEnd();
+            
+>>>>>>> Stashed changes
             }
             catch (DbUpdateException)
             {

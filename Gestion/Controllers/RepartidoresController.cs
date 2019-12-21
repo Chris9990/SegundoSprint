@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Gestion.Models;
@@ -10,93 +12,116 @@ namespace Gestion.Controllers
 {
     public class RepartidoresController : Controller
     {
-        // GET: Repartidor
+        private DbModels db = new DbModels();
+
+        // GET: Repartidores
         public ActionResult Index()
         {
-            using (DbModels dbModel = new DbModels())
-            {
-                return View(dbModel.Repartidores.ToList());
-            }
+            return View(db.Repartidores.ToList());
         }
 
-        // GET: Repartidor/Details/5
+        // GET: Repartidores/Details/5
         public ActionResult Details(string id)
         {
-            using (DbModels dbModel = new DbModels())
+            if (id == null)
             {
+<<<<<<< Updated upstream
                 return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
+=======
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+>>>>>>> Stashed changes
             }
+            Repartidores repartidores = db.Repartidores.Find(id);
+            if (repartidores == null)
+            {
+                return HttpNotFound();
+            }
+            return View(repartidores);
         }
 
-        // GET: Repartidor/Create
+        // GET: Repartidores/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Repartidor/Create
+        // POST: Repartidores/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(Repartidores repartidor)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Cod_Repartidores,CI,Telefono_Repartidor,Nombre_Repartidor,Placa")] Repartidores repartidores)
         {
-            try
+            if (ModelState.IsValid)
             {
-                using (DbModels dbModels = new DbModels())
-                {
-                    dbModels.Repartidores.Add(repartidor);
-                    dbModels.SaveChanges();
-
-                }
-
+                db.Repartidores.Add(repartidores);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(repartidores);
         }
 
-        // GET: Repartidor/Edit/5
+        // GET: Repartidores/Edit/5
         public ActionResult Edit(string id)
         {
-            using (DbModels dbModel = new DbModels())
+            if (id == null)
             {
-                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Repartidores repartidores = db.Repartidores.Find(id);
+            if (repartidores == null)
+            {
+<<<<<<< Updated upstream
+                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
+=======
+                return HttpNotFound();
+>>>>>>> Stashed changes
+            }
+            return View(repartidores);
         }
 
-        // POST: Repartidor/Edit/5
+        // POST: Repartidores/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(string id, Repartidores repartidor)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Cod_Repartidores,CI,Telefono_Repartidor,Nombre_Repartidor,Placa")] Repartidores repartidores)
         {
-            try
+            if (ModelState.IsValid)
             {
-                using (DbModels dbModel = new DbModels())
-                {
-                    dbModel.Entry(repartidor).State = EntityState.Modified;
-                    dbModel.SaveChanges();
-                }
-
+                db.Entry(repartidores).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(repartidores);
         }
 
-        // GET: Repartidor/Delete/5
+        // GET: Repartidores/Delete/5
         public ActionResult Delete(string id)
         {
-            using (DbModels dbModel = new DbModels())
+            if (id == null)
             {
+<<<<<<< Updated upstream
                 return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
+=======
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+>>>>>>> Stashed changes
             }
+            Repartidores repartidores = db.Repartidores.Find(id);
+            if (repartidores == null)
+            {
+                return HttpNotFound();
+            }
+            return View(repartidores);
         }
 
-        // POST: Repartidor/Delete/5
-        [HttpPost]
-        public ActionResult Delete(string id, FormCollection collection)
+        // POST: Repartidores/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
         {
+<<<<<<< Updated upstream
             try
             {
                 using (DbModels dbModel = new DbModels())
@@ -105,13 +130,21 @@ namespace Gestion.Controllers
                     dbModel.Repartidores.Remove(repartidor);
                     dbModel.SaveChanges();
                 }
+=======
+            Repartidores repartidores = db.Repartidores.Find(id);
+            db.Repartidores.Remove(repartidores);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+>>>>>>> Stashed changes
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

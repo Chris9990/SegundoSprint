@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Gestion.Models;
@@ -10,113 +12,116 @@ namespace Gestion.Controllers
 {
     public class ClientesController : Controller
     {
+        private DbModels db = new DbModels();
+
         // GET: Clientes
         public ActionResult Index()
         {
-            using (DbModels dbModel = new DbModels())
-            {
-                return View(dbModel.Clientes.ToList());
-            }
+            return View(db.Clientes.ToList());
         }
 
         // GET: Clientes/Details/5
         public ActionResult Details(string id)
         {
-            using (DbModels dbModel = new DbModels())
+            if (id == null)
             {
-                return View(dbModel.Clientes.Where(x => x.Cod_Cliente == id).FirstOrDefault());
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Clientes clientes = db.Clientes.Find(id);
+            if (clientes == null)
+            {
+                return HttpNotFound();
+            }
+            return View(clientes);
         }
 
         // GET: Clientes/Create
         public ActionResult Create()
         {
-            using (DbModels dbModel = new DbModels())
-            {
-                ViewBag.Cod_MPago = new SelectList(dbModel.Metodo_de_Pago, "Cod_MPago", "Metodo").ToList();
-
-                return View();
-            }
+            return View();
         }
 
         // POST: Clientes/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(Clientes cliente)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Cod_Clientes,Nombre_Cliente,Apellido_Cliente,Direccion_Cliente,Correo,Telefono_Cliente,Password")] Clientes clientes)
         {
-            try
+            if (ModelState.IsValid)
             {
-                using (DbModels dbModels = new DbModels())
-                {
-                    dbModels.Clientes.Add(cliente);
-                    dbModels.SaveChanges();
-
-                }
-
+                db.Clientes.Add(clientes);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(clientes);
         }
 
         // GET: Clientes/Edit/5
         public ActionResult Edit(string id)
         {
-            using (DbModels dbModel = new DbModels())
+            if (id == null)
             {
-                return View(dbModel.Clientes.Where(x => x.Cod_Cliente == id).FirstOrDefault());
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Clientes clientes = db.Clientes.Find(id);
+            if (clientes == null)
+            {
+                return HttpNotFound();
+            }
+            return View(clientes);
         }
 
         // POST: Clientes/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(string id, Clientes cliente)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Cod_Clientes,Nombre_Cliente,Apellido_Cliente,Direccion_Cliente,Correo,Telefono_Cliente,Password")] Clientes clientes)
         {
-            try
+            if (ModelState.IsValid)
             {
-                using (DbModels dbModel = new DbModels())
-                {
-                    dbModel.Entry(cliente).State = EntityState.Modified;
-                    dbModel.SaveChanges();
-                }
-
+                db.Entry(clientes).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(clientes);
         }
 
         // GET: Clientes/Delete/5
         public ActionResult Delete(string id)
         {
-            using (DbModels dbModel = new DbModels())
+            if (id == null)
             {
-                return View(dbModel.Clientes.Where(x => x.Cod_Cliente == id).FirstOrDefault());
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            Clientes clientes = db.Clientes.Find(id);
+            if (clientes == null)
+            {
+                return HttpNotFound();
+            }
+            return View(clientes);
         }
 
         // POST: Clientes/Delete/5
-        [HttpPost]
-        public ActionResult Delete(string id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
         {
-            try
-            {
-                using (DbModels dbModel = new DbModels())
-                {
-                    Clientes cliente = dbModel.Clientes.Where(x => x.Cod_Cliente == id).FirstOrDefault();
-                    dbModel.Clientes.Remove(cliente);
-                    dbModel.SaveChanges();
-                }
+            Clientes clientes = db.Clientes.Find(id);
+            db.Clientes.Remove(clientes);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                return View();
+                db.Dispose();
             }
+            base.Dispose(disposing);
         }
     }
 }

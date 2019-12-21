@@ -11,7 +11,9 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Marcas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +21,11 @@ namespace Gestion.Models
         {
             this.Productos = new HashSet<Productos>();
         }
-    
+        [Required]
+        [DisplayName("Código Marca:")]
         public string Cod_Marca { get; set; }
+        [Required]
+        [DisplayName("Marca:")]
         public string Nombre_Marca { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
