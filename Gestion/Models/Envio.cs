@@ -12,14 +12,17 @@ namespace Gestion.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Detalle_de_Compras
+    public partial class Envio
     {
-        public string Cod_Compra { get; set; }
-        public string Cod_Producto { get; set; }
-        public int Precio_Compra { get; set; }
-        public int Cantidad { get; set; }
+        public string Cod_Envio { get; set; }
+        public int Cod_Venta_Estado { get; set; }
+        public string Cod_Pedido { get; set; }
+        public string Cod_Sucursal { get; set; }
+        public string Cod_Repartidores { get; set; }
     
-        public virtual Compras Compras { get; set; }
-        public virtual Productos Productos { get; set; }
+        public virtual Pedido_de_Venta Pedido_de_Venta { get; set; }
+        public virtual Repartidores Repartidores { get; set; }
+        public virtual Sucursales Sucursales { get; set; }
+        public virtual Venta_Estado Venta_Estado { get; set; }
     }
 }

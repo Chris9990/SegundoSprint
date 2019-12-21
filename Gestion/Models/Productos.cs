@@ -11,27 +11,20 @@ namespace Gestion.Models
 {
     using System;
     using System.Collections.Generic;
-<<<<<<< Updated upstream
-=======
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
->>>>>>> Stashed changes
 
     public partial class Productos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Productos()
         {
-               this.Detalle_de_Compras = new HashSet<Detalle_de_Compras>();
-             this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
+            this.Detalle_de_Compras = new HashSet<Detalle_de_Compras>();
+            this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
             this.Producto_Sucursal = new HashSet<Producto_Sucursal>();
         }
-<<<<<<< Updated upstream
-
-=======
         [Required]
         [DisplayName("Código Producto:")]
->>>>>>> Stashed changes
         public string Cod_Producto { get; set; }
         [Required]
         [DisplayName("Nombre:")]
@@ -54,14 +47,9 @@ namespace Gestion.Models
         [Required]
         [DisplayName("URL:")]
         public string URLVideo { get; set; }
-<<<<<<< Updated upstream
-    
-
-=======
         [Required]
         [DisplayName("Stock:")]
         public string stock { get; set; }
->>>>>>> Stashed changes
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_de_Compras> Detalle_de_Compras { get; set; }

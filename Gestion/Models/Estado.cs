@@ -12,20 +12,18 @@ namespace Gestion.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ventas
+    public partial class Estado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ventas()
+        public Estado()
         {
-            this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
+            this.Venta_Estado = new HashSet<Venta_Estado>();
         }
     
-        public string Cod_Venta { get; set; }
-        public string Cod_Cliente { get; set; }
-        public System.DateTime Fecha_Venta { get; set; }
+        public int Cod_Estado { get; set; }
+        public string Descripcion_Estado { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido_de_Venta> Pedido_de_Venta { get; set; }
+        public virtual ICollection<Venta_Estado> Venta_Estado { get; set; }
     }
 }

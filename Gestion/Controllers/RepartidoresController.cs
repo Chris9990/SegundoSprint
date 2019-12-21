@@ -10,6 +10,7 @@ using Gestion.Models;
 
 namespace Gestion.Controllers
 {
+    [Authorize]
     public class RepartidoresController : Controller
     {
         private DbModels db = new DbModels();
@@ -25,11 +26,7 @@ namespace Gestion.Controllers
         {
             if (id == null)
             {
-<<<<<<< Updated upstream
-                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
-=======
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
->>>>>>> Stashed changes
             }
             Repartidores repartidores = db.Repartidores.Find(id);
             if (repartidores == null)
@@ -72,11 +69,7 @@ namespace Gestion.Controllers
             Repartidores repartidores = db.Repartidores.Find(id);
             if (repartidores == null)
             {
-<<<<<<< Updated upstream
-                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
-=======
                 return HttpNotFound();
->>>>>>> Stashed changes
             }
             return View(repartidores);
         }
@@ -102,11 +95,7 @@ namespace Gestion.Controllers
         {
             if (id == null)
             {
-<<<<<<< Updated upstream
-                return View(dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault());
-=======
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
->>>>>>> Stashed changes
             }
             Repartidores repartidores = db.Repartidores.Find(id);
             if (repartidores == null)
@@ -121,22 +110,11 @@ namespace Gestion.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-<<<<<<< Updated upstream
-            try
-            {
-                using (DbModels dbModel = new DbModels())
-                {
-                    Repartidores repartidor = dbModel.Repartidores.Where(x => x.Cod_Repartidor == id).FirstOrDefault();
-                    dbModel.Repartidores.Remove(repartidor);
-                    dbModel.SaveChanges();
-                }
-=======
             Repartidores repartidores = db.Repartidores.Find(id);
             db.Repartidores.Remove(repartidores);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
->>>>>>> Stashed changes
 
         protected override void Dispose(bool disposing)
         {

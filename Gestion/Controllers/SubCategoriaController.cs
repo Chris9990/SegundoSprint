@@ -9,6 +9,7 @@ using Gestion.Models;
 
 namespace Gestion.Controllers
 {
+    [Authorize]
     public class SubCategoriaController : Controller
     {
         // GET: SubCategoria

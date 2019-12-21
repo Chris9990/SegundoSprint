@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Gestion.Models;
@@ -35,21 +37,13 @@ namespace Gestion.Controllers
             ped x = new ped();
             x.Cod_Pedido = pedido_de_Venta.Cod_Pedido;
             x.Cod_Producto = pedido_de_Venta.Cod_Producto;
-            x.Cod_Sucursal = pedido_de_Venta.Cod_Sucursal;
-            x.Cod_Venta = pedido_de_Venta.Cod_Venta;
             x.Cantidad = pedido_de_Venta.Cantidad;
-            x.Cod_Repartidor = pedido_de_Venta.Cod_Repartidor;
-            x.FechaHora_Pedido = pedido_de_Venta.FechaHora_Pedido;
+            x.Cod_Cliente = pedido_de_Venta.Cod_Cliente;
+            x.Direccion = pedido_de_Venta.Direccion;
 
-<<<<<<< Updated upstream
-
-
-=======
             
             return Ok(x);
->>>>>>> Stashed changes
 
-            return Ok(x);
         }
 
         // PUT: api/Pedido_de_Venta1/5
@@ -71,7 +65,9 @@ namespace Gestion.Controllers
             try
             {
                 db.SaveChanges();
+                
             }
+
             catch (DbUpdateConcurrencyException)
             {
                 if (!Pedido_de_VentaExists(id))
@@ -101,8 +97,6 @@ namespace Gestion.Controllers
             try
             {
                 db.SaveChanges();
-<<<<<<< Updated upstream
-=======
                 ped x = new ped();
                 x.Cod_Pedido = pedido_de_Venta.Cod_Pedido;
                 x.Cod_Producto = pedido_de_Venta.Cod_Producto;
@@ -127,7 +121,6 @@ namespace Gestion.Controllers
                 var response = request.GetResponse();
                 json = (new StreamReader(response.GetResponseStream())).ReadToEnd();
             
->>>>>>> Stashed changes
             }
             catch (DbUpdateException)
             {
@@ -178,11 +171,10 @@ namespace Gestion.Controllers
         {
             public string Cod_Pedido { get; set; }
             public string Cod_Producto { get; set; }
-            public string Cod_Sucursal { get; set; }
-            public string Cod_Venta { get; set; }
             public int Cantidad { get; set; }
-            public string Cod_Repartidor { get; set; }
-            public System.DateTime FechaHora_Pedido { get; set; }
+            public string Cod_Cliente { get; set; }
+            public string Direccion { get; set; }
+
         }
     }
 }

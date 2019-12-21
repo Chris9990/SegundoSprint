@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="GestionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -76,15 +76,15 @@
         </EntityType>
         <EntityType Name="Clientes">
           <Key>
-            <PropertyRef Name="Cod_Cliente" />
+            <PropertyRef Name="Cod_Clientes" />
           </Key>
-          <Property Name="Cod_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Clientes" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Nombre_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Apellido_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Direccion_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Telefono_Cliente" Type="int" Nullable="false" />
-          <Property Name="Cod_MPago" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Compras">
           <Key>
@@ -100,14 +100,25 @@
           </Key>
           <Property Name="Cod_Compra" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cantidad" Type="int" />
+          <Property Name="Precio_Compra" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Entrega">
+        <EntityType Name="Envio">
           <Key>
-            <PropertyRef Name="Cod_Pedido" />
+            <PropertyRef Name="Cod_Envio" />
           </Key>
+          <Property Name="Cod_Envio" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Venta_Estado" Type="int" Nullable="false" />
           <Property Name="Cod_Pedido" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Fecha_Hora" Type="datetime" Nullable="false" />
+          <Property Name="Cod_Sucursal" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Repartidores" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="Cod_Estado" />
+          </Key>
+          <Property Name="Cod_Estado" Type="int" Nullable="false" />
+          <Property Name="Descripcion_Estado" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Marcas">
           <Key>
@@ -116,45 +127,15 @@
           <Property Name="Cod_Marca" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Nombre_Marca" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Metodo de Pago">
-          <Key>
-            <PropertyRef Name="Cod_MPago" />
-          </Key>
-          <Property Name="Cod_MPago" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Metodo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
-        </EntityType>
         <EntityType Name="Pedido de Venta">
           <Key>
             <PropertyRef Name="Cod_Pedido" />
           </Key>
           <Property Name="Cod_Pedido" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cod_Sucursal" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cod_Venta" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
-          <Property Name="Cod_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FechaHora_Pedido" Type="datetime" Nullable="false" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Pedido de VentaAPI' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Pedido de VentaAPI">
-          <Key>
-            <PropertyRef Name="Cod_Pedido" />
-            <PropertyRef Name="Cod_Producto" />
-            <PropertyRef Name="Cod_Sucursal" />
-            <PropertyRef Name="Cod_Venta" />
-            <PropertyRef Name="Cantidad" />
-            <PropertyRef Name="Cod_Repartidor" />
-            <PropertyRef Name="FechaHora_Pedido" />
-          </Key>
-          <Property Name="Cod_Pedido" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cod_Producto" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cod_Sucursal" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cod_Venta" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cantidad" Type="int" Nullable="false" />
-          <Property Name="Cod_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FechaHora_Pedido" Type="datetime" Nullable="false" />
+          <Property Name="Cod_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -182,6 +163,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Property Name="Oferta" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cod_SubCategoria" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="URLVideo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="stock" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Proveedores">
           <Key>
@@ -196,9 +178,9 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
         </EntityType>
         <EntityType Name="Repartidores">
           <Key>
-            <PropertyRef Name="Cod_Repartidor" />
+            <PropertyRef Name="Cod_Repartidores" />
           </Key>
-          <Property Name="Cod_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Repartidores" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CI" Type="int" Nullable="false" />
           <Property Name="Telefono_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Nombre_Repartidor" Type="varchar" MaxLength="50" Nullable="false" />
@@ -233,41 +215,22 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Tarjeta Cliente">
+        <EntityType Name="Usuarios">
           <Key>
-            <PropertyRef Name="Numero_Tarjeta" />
+            <PropertyRef Name="Usuario" />
           </Key>
-          <Property Name="Numero_Tarjeta" Type="int" Nullable="false" />
-          <Property Name="Cod_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Tarjeta_Credito">
+        <EntityType Name="Venta-Estado">
           <Key>
-            <PropertyRef Name="Numero_Tarjeta" />
+            <PropertyRef Name="Cod_Ventas_Estado" />
           </Key>
-          <Property Name="Numero_Tarjeta" Type="int" Nullable="false" />
-          <Property Name="CVC" Type="int" Nullable="false" />
-          <Property Name="Fecha_Caducidad" Type="datetime" Nullable="false" />
+          <Property Name="Cod_Estado" Type="int" Nullable="false" />
+          <Property Name="Fecha-Venta" Type="datetime" Nullable="false" />
+          <Property Name="Cod_Pedido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cod_Ventas_Estado" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Ventas">
-          <Key>
-            <PropertyRef Name="Cod_Venta" />
-          </Key>
-          <Property Name="Cod_Venta" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Cod_Cliente" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Fecha_Venta" Type="datetime" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Clientes_Metodo de PAgo">
-          <End Role="Metodo de Pago" Type="Self.Metodo de Pago" Multiplicity="1" />
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Metodo de Pago">
-              <PropertyRef Name="Cod_MPago" />
-            </Principal>
-            <Dependent Role="Clientes">
-              <PropertyRef Name="Cod_MPago" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Compras_Proveedores">
           <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
           <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
@@ -336,7 +299,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Detalle de Compras_Compras">
+        <Association Name="FK_Detalle de Compras_Compras1">
           <End Role="Compras" Type="Self.Compras" Multiplicity="1" />
           <End Role="Detalle de Compras" Type="Self.Detalle de Compras" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -360,15 +323,63 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pedido de Venta_Entrega">
-          <End Role="Entrega" Type="Self.Entrega" Multiplicity="1" />
-          <End Role="Pedido de Venta" Type="Self.Pedido de Venta" Multiplicity="0..1" />
+        <Association Name="FK_Envio_Pedido de Venta">
+          <End Role="Pedido de Venta" Type="Self.Pedido de Venta" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Entrega">
+            <Principal Role="Pedido de Venta">
               <PropertyRef Name="Cod_Pedido" />
             </Principal>
-            <Dependent Role="Pedido de Venta">
+            <Dependent Role="Envio">
               <PropertyRef Name="Cod_Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Repartidores1">
+          <End Role="Repartidores" Type="Self.Repartidores" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repartidores">
+              <PropertyRef Name="Cod_Repartidores" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="Cod_Repartidores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Sucursales">
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursales">
+              <PropertyRef Name="Cod_Sucursal" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="Cod_Sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Venta-Estado1">
+          <End Role="Venta-Estado" Type="Self.Venta-Estado" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta-Estado">
+              <PropertyRef Name="Cod_Ventas_Estado" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="Cod_Venta_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido de Venta_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Pedido de Venta" Type="Self.Pedido de Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Cod_Clientes" />
+            </Principal>
+            <Dependent Role="Pedido de Venta">
+              <PropertyRef Name="Cod_Cliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -381,42 +392,6 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Principal>
             <Dependent Role="Pedido de Venta">
               <PropertyRef Name="Cod_Producto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pedido de Venta_Repartidores">
-          <End Role="Repartidores" Type="Self.Repartidores" Multiplicity="1" />
-          <End Role="Pedido de Venta" Type="Self.Pedido de Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Repartidores">
-              <PropertyRef Name="Cod_Repartidor" />
-            </Principal>
-            <Dependent Role="Pedido de Venta">
-              <PropertyRef Name="Cod_Repartidor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pedido de Venta_Sucursales">
-          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="1" />
-          <End Role="Pedido de Venta" Type="Self.Pedido de Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sucursales">
-              <PropertyRef Name="Cod_Sucursal" />
-            </Principal>
-            <Dependent Role="Pedido de Venta">
-              <PropertyRef Name="Cod_Sucursal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pedido de Venta_Ventas">
-          <End Role="Ventas" Type="Self.Ventas" Multiplicity="1" />
-          <End Role="Pedido de Venta" Type="Self.Pedido de Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ventas">
-              <PropertyRef Name="Cod_Venta" />
-            </Principal>
-            <Dependent Role="Pedido de Venta">
-              <PropertyRef Name="Cod_Venta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -480,43 +455,31 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tarjeta Cliente_Clientes">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Tarjeta Cliente" Type="Self.Tarjeta Cliente" Multiplicity="*" />
+        <Association Name="FK_Venta-Estado_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Venta-Estado" Type="Self.Venta-Estado" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="Cod_Cliente" />
+            <Principal Role="Estado">
+              <PropertyRef Name="Cod_Estado" />
             </Principal>
-            <Dependent Role="Tarjeta Cliente">
-              <PropertyRef Name="Cod_Cliente" />
+            <Dependent Role="Venta-Estado">
+              <PropertyRef Name="Cod_Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tarjeta Cliente_Tarjeta_Credito">
-          <End Role="Tarjeta_Credito" Type="Self.Tarjeta_Credito" Multiplicity="1" />
-          <End Role="Tarjeta Cliente" Type="Self.Tarjeta Cliente" Multiplicity="0..1" />
+        <Association Name="FK_Veta-Estado_Pedido de Venta">
+          <End Role="Pedido de Venta" Type="Self.Pedido de Venta" Multiplicity="1" />
+          <End Role="Venta-Estado" Type="Self.Venta-Estado" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tarjeta_Credito">
-              <PropertyRef Name="Numero_Tarjeta" />
+            <Principal Role="Pedido de Venta">
+              <PropertyRef Name="Cod_Pedido" />
             </Principal>
-            <Dependent Role="Tarjeta Cliente">
-              <PropertyRef Name="Numero_Tarjeta" />
+            <Dependent Role="Venta-Estado">
+              <PropertyRef Name="Cod_Pedido" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ventas_Clientes">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="Cod_Cliente" />
-            </Principal>
-            <Dependent Role="Ventas">
-              <PropertyRef Name="Cod_Cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="GestionModelStoreContainer">
+        <EntityContainer Name="DbModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -527,9 +490,9 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Compras" EntityType="Self.Compras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Detalle de Compras" EntityType="Self.Detalle de Compras" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Entrega" EntityType="Self.Entrega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Envio" EntityType="Self.Envio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Metodo de Pago" EntityType="Self.Metodo de Pago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pedido de Venta" EntityType="Self.Pedido de Venta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
@@ -537,20 +500,8 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <EntitySet Name="SubCategoria" EntityType="Self.SubCategoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sucursales" EntityType="Self.Sucursales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tarjeta Cliente" EntityType="Self.Tarjeta Cliente" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pedido de VentaAPI" EntityType="Self.Pedido de VentaAPI" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Pedido de VentaAPI].[Cod_Pedido] AS [Cod_Pedido], 
-    [Pedido de VentaAPI].[Cod_Producto] AS [Cod_Producto], 
-    [Pedido de VentaAPI].[Cod_Sucursal] AS [Cod_Sucursal], 
-    [Pedido de VentaAPI].[Cod_Venta] AS [Cod_Venta], 
-    [Pedido de VentaAPI].[Cantidad] AS [Cantidad], 
-    [Pedido de VentaAPI].[Cod_Repartidor] AS [Cod_Repartidor], 
-    [Pedido de VentaAPI].[FechaHora_Pedido] AS [FechaHora_Pedido]
-    FROM [dbo].[Pedido de VentaAPI] AS [Pedido de VentaAPI]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Venta-Estado" EntityType="Self.Venta-Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producto_Sucursal" EntityType="Self.Producto_Sucursal" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Producto_Sucursal].[Cod_Producto] AS [Cod_Producto], 
@@ -559,10 +510,6 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
     [Producto_Sucursal].[Stock_minimo] AS [Stock_minimo]
     FROM [dbo].[Producto_Sucursal] AS [Producto_Sucursal]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_Clientes_Metodo de PAgo" Association="Self.FK_Clientes_Metodo de PAgo">
-            <End Role="Metodo de Pago" EntitySet="Metodo de Pago" />
-            <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Compras_Proveedores" Association="Self.FK_Compras_Proveedores">
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Compras" EntitySet="Compras" />
@@ -583,7 +530,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Detalle de Compras_Compras" Association="Self.FK_Detalle de Compras_Compras">
+          <AssociationSet Name="FK_Detalle de Compras_Compras1" Association="Self.FK_Detalle de Compras_Compras1">
             <End Role="Compras" EntitySet="Compras" />
             <End Role="Detalle de Compras" EntitySet="Detalle de Compras" />
           </AssociationSet>
@@ -591,24 +538,28 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Detalle de Compras" EntitySet="Detalle de Compras" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pedido de Venta_Entrega" Association="Self.FK_Pedido de Venta_Entrega">
-            <End Role="Entrega" EntitySet="Entrega" />
+          <AssociationSet Name="FK_Envio_Pedido de Venta" Association="Self.FK_Envio_Pedido de Venta">
+            <End Role="Pedido de Venta" EntitySet="Pedido de Venta" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Repartidores1" Association="Self.FK_Envio_Repartidores1">
+            <End Role="Repartidores" EntitySet="Repartidores" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Sucursales" Association="Self.FK_Envio_Sucursales">
+            <End Role="Sucursales" EntitySet="Sucursales" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Venta-Estado1" Association="Self.FK_Envio_Venta-Estado1">
+            <End Role="Venta-Estado" EntitySet="Venta-Estado" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido de Venta_Clientes" Association="Self.FK_Pedido de Venta_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Pedido de Venta" EntitySet="Pedido de Venta" />
           </AssociationSet>
           <AssociationSet Name="FK_Pedido de Venta_Productos" Association="Self.FK_Pedido de Venta_Productos">
             <End Role="Productos" EntitySet="Productos" />
-            <End Role="Pedido de Venta" EntitySet="Pedido de Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedido de Venta_Repartidores" Association="Self.FK_Pedido de Venta_Repartidores">
-            <End Role="Repartidores" EntitySet="Repartidores" />
-            <End Role="Pedido de Venta" EntitySet="Pedido de Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedido de Venta_Sucursales" Association="Self.FK_Pedido de Venta_Sucursales">
-            <End Role="Sucursales" EntitySet="Sucursales" />
-            <End Role="Pedido de Venta" EntitySet="Pedido de Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedido de Venta_Ventas" Association="Self.FK_Pedido de Venta_Ventas">
-            <End Role="Ventas" EntitySet="Ventas" />
             <End Role="Pedido de Venta" EntitySet="Pedido de Venta" />
           </AssociationSet>
           <AssociationSet Name="FK_Producto_Sucursal_Productos" Association="Self.FK_Producto_Sucursal_Productos">
@@ -631,23 +582,20 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Categorias" EntitySet="Categorias" />
             <End Role="SubCategoria" EntitySet="SubCategoria" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tarjeta Cliente_Clientes" Association="Self.FK_Tarjeta Cliente_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Tarjeta Cliente" EntitySet="Tarjeta Cliente" />
+          <AssociationSet Name="FK_Venta-Estado_Estado" Association="Self.FK_Venta-Estado_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Venta-Estado" EntitySet="Venta-Estado" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tarjeta Cliente_Tarjeta_Credito" Association="Self.FK_Tarjeta Cliente_Tarjeta_Credito">
-            <End Role="Tarjeta_Credito" EntitySet="Tarjeta_Credito" />
-            <End Role="Tarjeta Cliente" EntitySet="Tarjeta Cliente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ventas_Clientes" Association="Self.FK_Ventas_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Ventas" EntitySet="Ventas" />
+          <AssociationSet Name="FK_Veta-Estado_Pedido de Venta" Association="Self.FK_Veta-Estado_Pedido de Venta">
+            <End Role="Pedido de Venta" EntitySet="Pedido de Venta" />
+            <End Role="Venta-Estado" EntitySet="Venta-Estado" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GestionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -718,18 +666,16 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
         </EntityType>
         <EntityType Name="Clientes">
           <Key>
-            <PropertyRef Name="Cod_Cliente" />
+            <PropertyRef Name="Cod_Clientes" />
           </Key>
-          <Property Name="Cod_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Clientes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellido_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Direccion_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefono_Cliente" Type="Int32" Nullable="false" />
-          <Property Name="Cod_MPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Metodo_de_Pago" Relationship="Self.FK_Clientes_Metodo_de_PAgo" FromRole="Clientes" ToRole="Metodo_de_Pago" />
-          <NavigationProperty Name="Ventas" Relationship="Self.FK_Ventas_Clientes" FromRole="Clientes" ToRole="Ventas" />
-          <NavigationProperty Name="Tarjeta_Credito" Relationship="Self.Tarjeta_Cliente" FromRole="Clientes" ToRole="Tarjeta_Credito" />
+          <Property Name="Password" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Clientes" FromRole="Clientes" ToRole="Pedido_de_Venta" />
         </EntityType>
         <EntityType Name="Compras">
           <Key>
@@ -739,7 +685,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Property Name="Cod_Prov" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Fecha_Compra" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Proveedores" Relationship="Self.FK_Compras_Proveedores" FromRole="Compras" ToRole="Proveedores" />
-          <NavigationProperty Name="Detalle_de_Compras" Relationship="Self.FK_Detalle_de_Compras_Compras" FromRole="Compras" ToRole="Detalle_de_Compras" />
+          <NavigationProperty Name="Detalle_de_Compras" Relationship="Self.FK_Detalle_de_Compras_Compras1" FromRole="Compras" ToRole="Detalle_de_Compras" />
         </EntityType>
         <EntityType Name="Detalle_de_Compras">
           <Key>
@@ -747,17 +693,32 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           </Key>
           <Property Name="Cod_Compra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cod_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Compras" Relationship="Self.FK_Detalle_de_Compras_Compras" FromRole="Detalle_de_Compras" ToRole="Compras" />
+          <Property Name="Precio_Compra" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compras" Relationship="Self.FK_Detalle_de_Compras_Compras1" FromRole="Detalle_de_Compras" ToRole="Compras" />
           <NavigationProperty Name="Productos" Relationship="Self.FK_Detalle_de_Compras_Productos" FromRole="Detalle_de_Compras" ToRole="Productos" />
-          <Property Name="Cantidad" Type="Int32" />
         </EntityType>
-        <EntityType Name="Entrega">
+        <EntityType Name="Envio">
           <Key>
-            <PropertyRef Name="Cod_Pedido" />
+            <PropertyRef Name="Cod_Envio" />
           </Key>
+          <Property Name="Cod_Envio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Venta_Estado" Type="Int32" Nullable="false" />
           <Property Name="Cod_Pedido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Fecha_Hora" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Entrega" FromRole="Entrega" ToRole="Pedido_de_Venta" />
+          <Property Name="Cod_Sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Repartidores" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Envio_Pedido_de_Venta" FromRole="Envio" ToRole="Pedido_de_Venta" />
+          <NavigationProperty Name="Repartidores" Relationship="Self.FK_Envio_Repartidores1" FromRole="Envio" ToRole="Repartidores" />
+          <NavigationProperty Name="Sucursales" Relationship="Self.FK_Envio_Sucursales" FromRole="Envio" ToRole="Sucursales" />
+          <NavigationProperty Name="Venta_Estado" Relationship="Self.FK_Envio_Venta_Estado1" FromRole="Envio" ToRole="Venta_Estado" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="Cod_Estado" />
+          </Key>
+          <Property Name="Cod_Estado" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion_Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Venta_Estado" Relationship="Self.FK_Venta_Estado_Estado" FromRole="Estado" ToRole="Venta_Estado" />
         </EntityType>
         <EntityType Name="Marcas">
           <Key>
@@ -767,31 +728,19 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Property Name="Nombre_Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Marcas" FromRole="Marcas" ToRole="Productos" />
         </EntityType>
-        <EntityType Name="Metodo_de_Pago">
-          <Key>
-            <PropertyRef Name="Cod_MPago" />
-          </Key>
-          <Property Name="Cod_MPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Metodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_Metodo_de_PAgo" FromRole="Metodo_de_Pago" ToRole="Clientes" />
-        </EntityType>
         <EntityType Name="Pedido_de_Venta">
           <Key>
             <PropertyRef Name="Cod_Pedido" />
           </Key>
           <Property Name="Cod_Pedido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cod_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cod_Sucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cod_Venta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <Property Name="Cod_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FechaHora_Pedido" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Entrega" Relationship="Self.FK_Pedido_de_Venta_Entrega" FromRole="Pedido_de_Venta" ToRole="Entrega" />
+          <Property Name="Cod_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Pedido_de_Venta_Clientes" FromRole="Pedido_de_Venta" ToRole="Clientes" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Pedido_de_Venta" FromRole="Pedido_de_Venta" ToRole="Envio" />
           <NavigationProperty Name="Productos" Relationship="Self.FK_Pedido_de_Venta_Productos" FromRole="Pedido_de_Venta" ToRole="Productos" />
-          <NavigationProperty Name="Repartidores" Relationship="Self.FK_Pedido_de_Venta_Repartidores" FromRole="Pedido_de_Venta" ToRole="Repartidores" />
-          <NavigationProperty Name="Sucursales" Relationship="Self.FK_Pedido_de_Venta_Sucursales" FromRole="Pedido_de_Venta" ToRole="Sucursales" />
-          <NavigationProperty Name="Ventas" Relationship="Self.FK_Pedido_de_Venta_Ventas" FromRole="Pedido_de_Venta" ToRole="Ventas" />
+          <NavigationProperty Name="Venta_Estado" Relationship="Self.FK_Veta_Estado_Pedido_de_Venta" FromRole="Pedido_de_Venta" ToRole="Venta_Estado" />
         </EntityType>
         <EntityType Name="Productos">
           <Key>
@@ -805,6 +754,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Property Name="Oferta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cod_SubCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="URLVideo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stock" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Detalle_de_Compras" Relationship="Self.FK_Detalle_de_Compras_Productos" FromRole="Productos" ToRole="Detalle_de_Compras" />
           <NavigationProperty Name="Marcas" Relationship="Self.FK_Productos_Marcas" FromRole="Productos" ToRole="Marcas" />
           <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Productos" FromRole="Productos" ToRole="Pedido_de_Venta" />
@@ -825,14 +775,14 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
         </EntityType>
         <EntityType Name="Repartidores">
           <Key>
-            <PropertyRef Name="Cod_Repartidor" />
+            <PropertyRef Name="Cod_Repartidores" />
           </Key>
-          <Property Name="Cod_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Repartidores" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CI" Type="Int32" Nullable="false" />
           <Property Name="Telefono_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nombre_Repartidor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Placa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Repartidores" FromRole="Repartidores" ToRole="Pedido_de_Venta" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Repartidores1" FromRole="Repartidores" ToRole="Envio" />
         </EntityType>
         <EntityType Name="SubCategoria">
           <Key>
@@ -854,7 +804,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Property Name="Telefono_Sucursal" Type="Int32" Nullable="false" />
           <Property Name="Latitud" Type="Double" Nullable="false" />
           <Property Name="Longitud" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Sucursales" FromRole="Sucursales" ToRole="Pedido_de_Venta" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Sucursales" FromRole="Sucursales" ToRole="Envio" />
           <NavigationProperty Name="Producto_Sucursal" Relationship="Self.FK_Producto_Sucursal_Sucursales" FromRole="Sucursales" ToRole="Producto_Sucursal" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -867,24 +817,24 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Tarjeta_Credito">
+        <EntityType Name="Usuarios">
           <Key>
-            <PropertyRef Name="Numero_Tarjeta" />
+            <PropertyRef Name="Usuario" />
           </Key>
-          <Property Name="Numero_Tarjeta" Type="Int32" Nullable="false" />
-          <Property Name="CVC" Type="Int32" Nullable="false" />
-          <Property Name="Fecha_Caducidad" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Clientes" Relationship="Self.Tarjeta_Cliente" FromRole="Tarjeta_Credito" ToRole="Clientes" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="Ventas">
+        <EntityType Name="Venta_Estado">
           <Key>
-            <PropertyRef Name="Cod_Venta" />
+            <PropertyRef Name="Cod_Ventas_Estado" />
           </Key>
-          <Property Name="Cod_Venta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cod_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Estado" Type="Int32" Nullable="false" />
           <Property Name="Fecha_Venta" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Clientes" Relationship="Self.FK_Ventas_Clientes" FromRole="Ventas" ToRole="Clientes" />
-          <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Pedido_de_Venta_Ventas" FromRole="Ventas" ToRole="Pedido_de_Venta" />
+          <Property Name="Cod_Pedido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cod_Ventas_Estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Venta_Estado1" FromRole="Venta_Estado" ToRole="Envio" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Venta_Estado_Estado" FromRole="Venta_Estado" ToRole="Estado" />
+          <NavigationProperty Name="Pedido_de_Venta" Relationship="Self.FK_Veta_Estado_Pedido_de_Venta" FromRole="Venta_Estado" ToRole="Pedido_de_Venta" />
         </EntityType>
         <EntityType Name="Producto_Sucursal">
           <Key>
@@ -940,26 +890,14 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Clientes_Metodo_de_PAgo">
-          <End Role="Metodo_de_Pago" Type="Self.Metodo_de_Pago" Multiplicity="1" />
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Metodo_de_Pago">
-              <PropertyRef Name="Cod_MPago" />
-            </Principal>
-            <Dependent Role="Clientes">
-              <PropertyRef Name="Cod_MPago" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ventas_Clientes">
+        <Association Name="FK_Pedido_de_Venta_Clientes">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+          <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clientes">
-              <PropertyRef Name="Cod_Cliente" />
+              <PropertyRef Name="Cod_Clientes" />
             </Principal>
-            <Dependent Role="Ventas">
+            <Dependent Role="Pedido_de_Venta">
               <PropertyRef Name="Cod_Cliente" />
             </Dependent>
           </ReferentialConstraint>
@@ -976,7 +914,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Detalle_de_Compras_Compras">
+        <Association Name="FK_Detalle_de_Compras_Compras1">
           <End Role="Compras" Type="Self.Compras" Multiplicity="1" />
           <End Role="Detalle_de_Compras" Type="Self.Detalle_de_Compras" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1000,15 +938,63 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pedido_de_Venta_Entrega">
-          <End Role="Entrega" Type="Self.Entrega" Multiplicity="1" />
-          <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="0..1" />
+        <Association Name="FK_Envio_Pedido_de_Venta">
+          <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Entrega">
+            <Principal Role="Pedido_de_Venta">
               <PropertyRef Name="Cod_Pedido" />
             </Principal>
-            <Dependent Role="Pedido_de_Venta">
+            <Dependent Role="Envio">
               <PropertyRef Name="Cod_Pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Repartidores1">
+          <End Role="Repartidores" Type="Self.Repartidores" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repartidores">
+              <PropertyRef Name="Cod_Repartidores" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="Cod_Repartidores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Sucursales">
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursales">
+              <PropertyRef Name="Cod_Sucursal" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="Cod_Sucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Venta_Estado1">
+          <End Role="Venta_Estado" Type="Self.Venta_Estado" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta_Estado">
+              <PropertyRef Name="Cod_Ventas_Estado" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="Cod_Venta_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venta_Estado_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Venta_Estado" Type="Self.Venta_Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="Cod_Estado" />
+            </Principal>
+            <Dependent Role="Venta_Estado">
+              <PropertyRef Name="Cod_Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1036,39 +1022,15 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pedido_de_Venta_Repartidores">
-          <End Role="Repartidores" Type="Self.Repartidores" Multiplicity="1" />
-          <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="*" />
+        <Association Name="FK_Veta_Estado_Pedido_de_Venta">
+          <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="1" />
+          <End Role="Venta_Estado" Type="Self.Venta_Estado" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Repartidores">
-              <PropertyRef Name="Cod_Repartidor" />
+            <Principal Role="Pedido_de_Venta">
+              <PropertyRef Name="Cod_Pedido" />
             </Principal>
-            <Dependent Role="Pedido_de_Venta">
-              <PropertyRef Name="Cod_Repartidor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pedido_de_Venta_Sucursales">
-          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="1" />
-          <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sucursales">
-              <PropertyRef Name="Cod_Sucursal" />
-            </Principal>
-            <Dependent Role="Pedido_de_Venta">
-              <PropertyRef Name="Cod_Sucursal" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pedido_de_Venta_Ventas">
-          <End Role="Ventas" Type="Self.Ventas" Multiplicity="1" />
-          <End Role="Pedido_de_Venta" Type="Self.Pedido_de_Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ventas">
-              <PropertyRef Name="Cod_Venta" />
-            </Principal>
-            <Dependent Role="Pedido_de_Venta">
-              <PropertyRef Name="Cod_Venta" />
+            <Dependent Role="Venta_Estado">
+              <PropertyRef Name="Cod_Pedido" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1112,10 +1074,6 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
         </Association>
-        <Association Name="Tarjeta_Cliente">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
-          <End Role="Tarjeta_Credito" Type="Self.Tarjeta_Credito" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
@@ -1126,9 +1084,9 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
           <EntitySet Name="Compras" EntityType="Self.Compras" />
           <EntitySet Name="Detalle_de_Compras" EntityType="Self.Detalle_de_Compras" />
-          <EntitySet Name="Entrega" EntityType="Self.Entrega" />
+          <EntitySet Name="Envio" EntityType="Self.Envio" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
           <EntitySet Name="Marcas" EntityType="Self.Marcas" />
-          <EntitySet Name="Metodo_de_Pago" EntityType="Self.Metodo_de_Pago" />
           <EntitySet Name="Pedido_de_Venta" EntityType="Self.Pedido_de_Venta" />
           <EntitySet Name="Productos" EntityType="Self.Productos" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
@@ -1136,8 +1094,8 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
           <EntitySet Name="SubCategoria" EntityType="Self.SubCategoria" />
           <EntitySet Name="Sucursales" EntityType="Self.Sucursales" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Tarjeta_Credito" EntityType="Self.Tarjeta_Credito" />
-          <EntitySet Name="Ventas" EntityType="Self.Ventas" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="Venta_Estado" EntityType="Self.Venta_Estado" />
           <EntitySet Name="Producto_Sucursal" EntityType="Self.Producto_Sucursal" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -1151,19 +1109,15 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Categorias" EntitySet="Categorias" />
             <End Role="SubCategoria" EntitySet="SubCategoria" />
           </AssociationSet>
-          <AssociationSet Name="FK_Clientes_Metodo_de_PAgo" Association="Self.FK_Clientes_Metodo_de_PAgo">
-            <End Role="Metodo_de_Pago" EntitySet="Metodo_de_Pago" />
+          <AssociationSet Name="FK_Pedido_de_Venta_Clientes" Association="Self.FK_Pedido_de_Venta_Clientes">
             <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ventas_Clientes" Association="Self.FK_Ventas_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Ventas" EntitySet="Ventas" />
+            <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
           </AssociationSet>
           <AssociationSet Name="FK_Compras_Proveedores" Association="Self.FK_Compras_Proveedores">
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Compras" EntitySet="Compras" />
           </AssociationSet>
-          <AssociationSet Name="FK_Detalle_de_Compras_Compras" Association="Self.FK_Detalle_de_Compras_Compras">
+          <AssociationSet Name="FK_Detalle_de_Compras_Compras1" Association="Self.FK_Detalle_de_Compras_Compras1">
             <End Role="Compras" EntitySet="Compras" />
             <End Role="Detalle_de_Compras" EntitySet="Detalle_de_Compras" />
           </AssociationSet>
@@ -1171,9 +1125,25 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Detalle_de_Compras" EntitySet="Detalle_de_Compras" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pedido_de_Venta_Entrega" Association="Self.FK_Pedido_de_Venta_Entrega">
-            <End Role="Entrega" EntitySet="Entrega" />
+          <AssociationSet Name="FK_Envio_Pedido_de_Venta" Association="Self.FK_Envio_Pedido_de_Venta">
             <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Repartidores1" Association="Self.FK_Envio_Repartidores1">
+            <End Role="Repartidores" EntitySet="Repartidores" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Sucursales" Association="Self.FK_Envio_Sucursales">
+            <End Role="Sucursales" EntitySet="Sucursales" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Venta_Estado1" Association="Self.FK_Envio_Venta_Estado1">
+            <End Role="Venta_Estado" EntitySet="Venta_Estado" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venta_Estado_Estado" Association="Self.FK_Venta_Estado_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Venta_Estado" EntitySet="Venta_Estado" />
           </AssociationSet>
           <AssociationSet Name="FK_Productos_Marcas" Association="Self.FK_Productos_Marcas">
             <End Role="Marcas" EntitySet="Marcas" />
@@ -1183,17 +1153,9 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="Productos" EntitySet="Productos" />
             <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pedido_de_Venta_Repartidores" Association="Self.FK_Pedido_de_Venta_Repartidores">
-            <End Role="Repartidores" EntitySet="Repartidores" />
+          <AssociationSet Name="FK_Veta_Estado_Pedido_de_Venta" Association="Self.FK_Veta_Estado_Pedido_de_Venta">
             <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedido_de_Venta_Sucursales" Association="Self.FK_Pedido_de_Venta_Sucursales">
-            <End Role="Sucursales" EntitySet="Sucursales" />
-            <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedido_de_Venta_Ventas" Association="Self.FK_Pedido_de_Venta_Ventas">
-            <End Role="Ventas" EntitySet="Ventas" />
-            <End Role="Pedido_de_Venta" EntitySet="Pedido_de_Venta" />
+            <End Role="Venta_Estado" EntitySet="Venta_Estado" />
           </AssociationSet>
           <AssociationSet Name="FK_Producto_Sucursal_Productos" Association="Self.FK_Producto_Sucursal_Productos">
             <End Role="Productos" EntitySet="Productos" />
@@ -1211,38 +1173,15 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <AssociationSet Name="Tarjeta_Cliente" Association="Self.Tarjeta_Cliente">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Tarjeta_Credito" EntitySet="Tarjeta_Credito" />
-          </AssociationSet>
-          <EntitySet Name="Pedido_de_VentaAPI" EntityType="GestionModel.Pedido_de_VentaAPI" />
         </EntityContainer>
-        <EntityType Name="Pedido_de_VentaAPI">
-          <Key>
-            <PropertyRef Name="Cod_Pedido" />
-            <PropertyRef Name="Cod_Producto" />
-            <PropertyRef Name="Cod_Sucursal" />
-            <PropertyRef Name="Cod_Venta" />
-            <PropertyRef Name="Cantidad" />
-            <PropertyRef Name="Cod_Repartidor" />
-            <PropertyRef Name="FechaHora_Pedido" />
-          </Key>
-          <Property Name="Cod_Pedido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cod_Producto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cod_Sucursal" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cod_Venta" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <Property Name="Cod_Repartidor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FechaHora_Pedido" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GestionModelStoreContainer" CdmEntityContainer="DbModels">
+        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="DbModels">
           <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="GestionModel.C__MigrationHistory">
+            <EntityTypeMapping TypeName="DbModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
                 <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -1252,7 +1191,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="GestionModel.AspNetRoles">
+            <EntityTypeMapping TypeName="DbModel.AspNetRoles">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1260,7 +1199,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="GestionModel.AspNetUserClaims">
+            <EntityTypeMapping TypeName="DbModel.AspNetUserClaims">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1270,7 +1209,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="GestionModel.AspNetUserLogins">
+            <EntityTypeMapping TypeName="DbModel.AspNetUserLogins">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -1279,7 +1218,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="GestionModel.AspNetUsers">
+            <EntityTypeMapping TypeName="DbModel.AspNetUsers">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1297,7 +1236,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categorias">
-            <EntityTypeMapping TypeName="GestionModel.Categorias">
+            <EntityTypeMapping TypeName="DbModel.Categorias">
               <MappingFragment StoreEntitySet="Categorias">
                 <ScalarProperty Name="Cod_Categoria" ColumnName="Cod_Categoria" />
                 <ScalarProperty Name="Nombre_Categoria" ColumnName="Nombre_Categoria" />
@@ -1306,20 +1245,20 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="GestionModel.Clientes">
+            <EntityTypeMapping TypeName="DbModel.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
-                <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
+                <ScalarProperty Name="Cod_Clientes" ColumnName="Cod_Clientes" />
                 <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
                 <ScalarProperty Name="Apellido_Cliente" ColumnName="Apellido_Cliente" />
                 <ScalarProperty Name="Direccion_Cliente" ColumnName="Direccion_Cliente" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="Telefono_Cliente" ColumnName="Telefono_Cliente" />
-                <ScalarProperty Name="Cod_MPago" ColumnName="Cod_MPago" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Compras">
-            <EntityTypeMapping TypeName="GestionModel.Compras">
+            <EntityTypeMapping TypeName="DbModel.Compras">
               <MappingFragment StoreEntitySet="Compras">
                 <ScalarProperty Name="Cod_Compra" ColumnName="Cod_Compra" />
                 <ScalarProperty Name="Cod_Prov" ColumnName="Cod_Prov" />
@@ -1328,54 +1267,55 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Detalle_de_Compras">
-            <EntityTypeMapping TypeName="GestionModel.Detalle_de_Compras">
+            <EntityTypeMapping TypeName="DbModel.Detalle_de_Compras">
               <MappingFragment StoreEntitySet="Detalle de Compras">
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Cod_Compra" ColumnName="Cod_Compra" />
                 <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+                <ScalarProperty Name="Precio_Compra" ColumnName="Precio_Compra" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Entrega">
-            <EntityTypeMapping TypeName="GestionModel.Entrega">
-              <MappingFragment StoreEntitySet="Entrega">
+          <EntitySetMapping Name="Envio">
+            <EntityTypeMapping TypeName="DbModel.Envio">
+              <MappingFragment StoreEntitySet="Envio">
+                <ScalarProperty Name="Cod_Envio" ColumnName="Cod_Envio" />
+                <ScalarProperty Name="Cod_Venta_Estado" ColumnName="Cod_Venta_Estado" />
                 <ScalarProperty Name="Cod_Pedido" ColumnName="Cod_Pedido" />
-                <ScalarProperty Name="Fecha_Hora" ColumnName="Fecha_Hora" />
+                <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+                <ScalarProperty Name="Cod_Repartidores" ColumnName="Cod_Repartidores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="DbModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="Cod_Estado" ColumnName="Cod_Estado" />
+                <ScalarProperty Name="Descripcion_Estado" ColumnName="Descripcion_Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Marcas">
-            <EntityTypeMapping TypeName="GestionModel.Marcas">
+            <EntityTypeMapping TypeName="DbModel.Marcas">
               <MappingFragment StoreEntitySet="Marcas">
                 <ScalarProperty Name="Cod_Marca" ColumnName="Cod_Marca" />
                 <ScalarProperty Name="Nombre_Marca" ColumnName="Nombre_Marca" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Metodo_de_Pago">
-            <EntityTypeMapping TypeName="GestionModel.Metodo_de_Pago">
-              <MappingFragment StoreEntitySet="Metodo de Pago">
-                <ScalarProperty Name="Cod_MPago" ColumnName="Cod_MPago" />
-                <ScalarProperty Name="Metodo" ColumnName="Metodo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Pedido_de_Venta">
-            <EntityTypeMapping TypeName="GestionModel.Pedido_de_Venta">
+            <EntityTypeMapping TypeName="DbModel.Pedido_de_Venta">
               <MappingFragment StoreEntitySet="Pedido de Venta">
                 <ScalarProperty Name="Cod_Pedido" ColumnName="Cod_Pedido" />
                 <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
-                <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
-                <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Cod_Repartidor" ColumnName="Cod_Repartidor" />
-                <ScalarProperty Name="FechaHora_Pedido" ColumnName="FechaHora_Pedido" />
+                <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Productos">
-            <EntityTypeMapping TypeName="GestionModel.Productos">
+            <EntityTypeMapping TypeName="DbModel.Productos">
               <MappingFragment StoreEntitySet="Productos">
                 <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
                 <ScalarProperty Name="Nombre_Producto" ColumnName="Nombre_Producto" />
@@ -1385,11 +1325,12 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
                 <ScalarProperty Name="Oferta" ColumnName="Oferta" />
                 <ScalarProperty Name="Cod_SubCategoria" ColumnName="Cod_SubCategoria" />
                 <ScalarProperty Name="URLVideo" ColumnName="URLVideo" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Proveedores">
-            <EntityTypeMapping TypeName="GestionModel.Proveedores">
+            <EntityTypeMapping TypeName="DbModel.Proveedores">
               <MappingFragment StoreEntitySet="Proveedores">
                 <ScalarProperty Name="Cod_Prov" ColumnName="Cod_Prov" />
                 <ScalarProperty Name="Empresa" ColumnName="Empresa" />
@@ -1401,9 +1342,9 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Repartidores">
-            <EntityTypeMapping TypeName="GestionModel.Repartidores">
+            <EntityTypeMapping TypeName="DbModel.Repartidores">
               <MappingFragment StoreEntitySet="Repartidores">
-                <ScalarProperty Name="Cod_Repartidor" ColumnName="Cod_Repartidor" />
+                <ScalarProperty Name="Cod_Repartidores" ColumnName="Cod_Repartidores" />
                 <ScalarProperty Name="CI" ColumnName="CI" />
                 <ScalarProperty Name="Telefono_Repartidor" ColumnName="Telefono_Repartidor" />
                 <ScalarProperty Name="Nombre_Repartidor" ColumnName="Nombre_Repartidor" />
@@ -1412,7 +1353,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SubCategoria">
-            <EntityTypeMapping TypeName="GestionModel.SubCategoria">
+            <EntityTypeMapping TypeName="DbModel.SubCategoria">
               <MappingFragment StoreEntitySet="SubCategoria">
                 <ScalarProperty Name="Cod_SubCategoria" ColumnName="Cod_SubCategoria" />
                 <ScalarProperty Name="Nombre_SubCategoria" ColumnName="Nombre_SubCategoria" />
@@ -1422,7 +1363,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sucursales">
-            <EntityTypeMapping TypeName="GestionModel.Sucursales">
+            <EntityTypeMapping TypeName="DbModel.Sucursales">
               <MappingFragment StoreEntitySet="Sucursales">
                 <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
                 <ScalarProperty Name="Direccion_Sucursal" ColumnName="Direccion_Sucursal" />
@@ -1433,7 +1374,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="GestionModel.sysdiagrams">
+            <EntityTypeMapping TypeName="DbModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1443,26 +1384,26 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tarjeta_Credito">
-            <EntityTypeMapping TypeName="GestionModel.Tarjeta_Credito">
-              <MappingFragment StoreEntitySet="Tarjeta_Credito">
-                <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
-                <ScalarProperty Name="CVC" ColumnName="CVC" />
-                <ScalarProperty Name="Fecha_Caducidad" ColumnName="Fecha_Caducidad" />
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DbModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Ventas">
-            <EntityTypeMapping TypeName="GestionModel.Ventas">
-              <MappingFragment StoreEntitySet="Ventas">
-                <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
-                <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
-                <ScalarProperty Name="Fecha_Venta" ColumnName="Fecha_Venta" />
+          <EntitySetMapping Name="Venta_Estado">
+            <EntityTypeMapping TypeName="DbModel.Venta_Estado">
+              <MappingFragment StoreEntitySet="Venta-Estado">
+                <ScalarProperty Name="Cod_Estado" ColumnName="Cod_Estado" />
+                <ScalarProperty Name="Fecha_Venta" ColumnName="Fecha-Venta" />
+                <ScalarProperty Name="Cod_Pedido" ColumnName="Cod_Pedido" />
+                <ScalarProperty Name="Cod_Ventas_Estado" ColumnName="Cod_Ventas_Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Producto_Sucursal">
-            <EntityTypeMapping TypeName="GestionModel.Producto_Sucursal">
+            <EntityTypeMapping TypeName="DbModel.Producto_Sucursal">
               <MappingFragment StoreEntitySet="Producto_Sucursal">
                 <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
                 <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
@@ -1471,7 +1412,7 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="GestionModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
@@ -1479,27 +1420,6 @@ advertencia 6002: La tabla o vista 'Base Super Mercado V1.dbo.Producto_Sucursal'
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="Tarjeta_Cliente" TypeName="GestionModel.Tarjeta_Cliente" StoreEntitySet="Tarjeta Cliente">
-            <EndProperty Name="Clientes">
-              <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
-            </EndProperty>
-            <EndProperty Name="Tarjeta_Credito">
-              <ScalarProperty Name="Numero_Tarjeta" ColumnName="Numero_Tarjeta" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="Pedido_de_VentaAPI">
-            <EntityTypeMapping TypeName="GestionModel.Pedido_de_VentaAPI">
-              <MappingFragment StoreEntitySet="Pedido de VentaAPI">
-                <ScalarProperty Name="FechaHora_Pedido" ColumnName="FechaHora_Pedido" />
-                <ScalarProperty Name="Cod_Repartidor" ColumnName="Cod_Repartidor" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
-                <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
-                <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
-                <ScalarProperty Name="Cod_Pedido" ColumnName="Cod_Pedido" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

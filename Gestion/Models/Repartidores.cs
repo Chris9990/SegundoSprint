@@ -19,18 +19,13 @@ namespace Gestion.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Repartidores()
         {
-            this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
+            this.Envio = new HashSet<Envio>();
         }
-<<<<<<< Updated upstream
-    
-        public string Cod_Repartidor { get; set; }
-=======
         [Required]
         [DisplayName("Código Repartidor:")]
         public string Cod_Repartidores { get; set; }
         [Required]
         [DisplayName("CI:")]
->>>>>>> Stashed changes
         public int CI { get; set; }
         [Required]
         [DisplayName("Teléfono:")]
@@ -43,6 +38,6 @@ namespace Gestion.Models
         public string Placa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido_de_Venta> Pedido_de_Venta { get; set; }
+        public virtual ICollection<Envio> Envio { get; set; }
     }
 }

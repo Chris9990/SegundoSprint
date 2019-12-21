@@ -12,11 +12,22 @@ namespace Gestion.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Entrega
+    public partial class Venta_Estado
     {
-        public string Cod_Pedido { get; set; }
-        public System.DateTime Fecha_Hora { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Venta_Estado()
+        {
+            this.Envio = new HashSet<Envio>();
+        }
     
+        public int Cod_Estado { get; set; }
+        public System.DateTime Fecha_Venta { get; set; }
+        public string Cod_Pedido { get; set; }
+        public int Cod_Ventas_Estado { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Envio> Envio { get; set; }
+        public virtual Estado Estado { get; set; }
         public virtual Pedido_de_Venta Pedido_de_Venta { get; set; }
     }
 }

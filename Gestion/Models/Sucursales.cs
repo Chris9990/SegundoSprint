@@ -19,7 +19,7 @@ namespace Gestion.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sucursales()
         {
-            this.Pedido_de_Venta = new HashSet<Pedido_de_Venta>();
+            this.Envio = new HashSet<Envio>();
             this.Producto_Sucursal = new HashSet<Producto_Sucursal>();
         }
         [Required]
@@ -39,7 +39,7 @@ namespace Gestion.Models
         public double Longitud { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido_de_Venta> Pedido_de_Venta { get; set; }
+        public virtual ICollection<Envio> Envio { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto_Sucursal> Producto_Sucursal { get; set; }
     }

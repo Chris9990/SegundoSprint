@@ -11,15 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Codigo del Producto:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cod_Producto)
-        </dd>
-
-        <dt>
-            Nombre:
+            @Html.DisplayNameFor(model => model.Nombre_Producto)
         </dt>
 
         <dd>
@@ -27,15 +19,7 @@
         </dd>
 
         <dt>
-            Codigo de la Marca:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cod_Marca)
-        </dd>
-
-        <dt>
-            Información:
+            @Html.DisplayNameFor(model => model.Informacion)
         </dt>
 
         <dd>
@@ -43,7 +27,7 @@
         </dd>
 
         <dt>
-            Precio de Venta:
+            @Html.DisplayNameFor(model => model.Precio_Venta)
         </dt>
 
         <dd>
@@ -51,7 +35,7 @@
         </dd>
 
         <dt>
-            Oferta:
+            @Html.DisplayNameFor(model => model.Oferta)
         </dt>
 
         <dd>
@@ -59,24 +43,40 @@
         </dd>
 
         <dt>
-            SubCategoria:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cod_SubCategoria)
-        </dd>
-
-        <dt>
-            URL:
+            @Html.DisplayNameFor(model => model.URLVideo)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.URLVideo)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marcas.Nombre_Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marcas.Nombre_Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubCategoria.Nombre_SubCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubCategoria.Nombre_SubCategoria)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Cod_Producto  }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Cod_Producto }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

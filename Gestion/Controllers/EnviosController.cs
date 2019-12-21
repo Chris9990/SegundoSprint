@@ -12,50 +12,44 @@ using Gestion.Models;
 
 namespace Gestion.Controllers
 {
-    
-    public class Marcas1Controller : ApiController
+    public class EnviosController : ApiController
     {
         private DbModels db = new DbModels();
 
-        // GET: api/Marcas1
-        public IQueryable<Marcas> GetMarcas()
+        // GET: api/Envios
+        public IQueryable<Envio> GetEnvio()
         {
-            return db.Marcas;
+            return db.Envio;
         }
 
-        // GET: api/Marcas1/5
-        [ResponseType(typeof(Marcas))]
-        public IHttpActionResult GetMarcas(string id)
+        // GET: api/Envios/5
+        [ResponseType(typeof(Envio))]
+        public IHttpActionResult GetEnvio(string id)
         {
-            Marcas marcas = db.Marcas.Find(id);
-            if (marcas == null)
+            Envio envio = db.Envio.Find(id);
+            if (envio == null)
             {
                 return NotFound();
             }
-            mar m = new mar();
 
-            m.Cod_Marca = marcas.Cod_Marca;
-            m.Nombre_Marca = marcas.Nombre_Marca;
-
-            
-            return Ok(m);
+            return Ok(envio);
         }
 
-        // PUT: api/Marcas1/5
+        // PUT: api/Envios/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMarcas(string id, Marcas marcas)
+        public IHttpActionResult PutEnvio(string id, Envio envio)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != marcas.Cod_Marca)
+            if (id != envio.Cod_Envio)
             {
                 return BadRequest();
             }
 
-            db.Entry(marcas).State = EntityState.Modified;
+            db.Entry(envio).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +57,7 @@ namespace Gestion.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MarcasExists(id))
+                if (!EnvioExists(id))
                 {
                     return NotFound();
                 }
@@ -76,16 +70,16 @@ namespace Gestion.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Marcas1
-        [ResponseType(typeof(Marcas))]
-        public IHttpActionResult PostMarcas(Marcas marcas)
+        // POST: api/Envios
+        [ResponseType(typeof(Envio))]
+        public IHttpActionResult PostEnvio(Envio envio)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Marcas.Add(marcas);
+            db.Envio.Add(envio);
 
             try
             {
@@ -93,7 +87,7 @@ namespace Gestion.Controllers
             }
             catch (DbUpdateException)
             {
-                if (MarcasExists(marcas.Cod_Marca))
+                if (EnvioExists(envio.Cod_Envio))
                 {
                     return Conflict();
                 }
@@ -103,23 +97,23 @@ namespace Gestion.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = marcas.Cod_Marca }, marcas);
+            return CreatedAtRoute("DefaultApi", new { id = envio.Cod_Envio }, envio);
         }
 
-        // DELETE: api/Marcas1/5
-        [ResponseType(typeof(Marcas))]
-        public IHttpActionResult DeleteMarcas(string id)
+        // DELETE: api/Envios/5
+        [ResponseType(typeof(Envio))]
+        public IHttpActionResult DeleteEnvio(string id)
         {
-            Marcas marcas = db.Marcas.Find(id);
-            if (marcas == null)
+            Envio envio = db.Envio.Find(id);
+            if (envio == null)
             {
                 return NotFound();
             }
 
-            db.Marcas.Remove(marcas);
+            db.Envio.Remove(envio);
             db.SaveChanges();
 
-            return Ok(marcas);
+            return Ok(envio);
         }
 
         protected override void Dispose(bool disposing)
@@ -131,15 +125,9 @@ namespace Gestion.Controllers
             base.Dispose(disposing);
         }
 
-        private bool MarcasExists(string id)
+        private bool EnvioExists(string id)
         {
-            return db.Marcas.Count(e => e.Cod_Marca == id) > 0;
+            return db.Envio.Count(e => e.Cod_Envio == id) > 0;
         }
-        private class mar
-        {
-            public string Cod_Marca { get; set; }
-            public string Nombre_Marca { get; set; }
-        }
-
     }
 }

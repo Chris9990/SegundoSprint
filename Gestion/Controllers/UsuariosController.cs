@@ -10,39 +10,38 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Gestion.Models;
 
+
 namespace Gestion.Controllers
 {
-    
-    public class Marcas1Controller : ApiController
+    public class UsuariosController : ApiController
     {
         private DbModels db = new DbModels();
-
         // GET: api/Marcas1
-        public IQueryable<Marcas> GetMarcas()
+        public IQueryable<Usuarios> GetClientes1()
         {
-            return db.Marcas;
+            return db.Usuarios;
         }
 
         // GET: api/Marcas1/5
-        [ResponseType(typeof(Marcas))]
-        public IHttpActionResult GetMarcas(string id)
+        [ResponseType(typeof(Usuarios))]
+        public IHttpActionResult GetClientes1(string id)
         {
-            Marcas marcas = db.Marcas.Find(id);
-            if (marcas == null)
+            Usuarios usuario = db.Usuarios.Find(id);
+            if (usuario == null)
             {
                 return NotFound();
             }
-            mar m = new mar();
+            use c = new use();
 
-            m.Cod_Marca = marcas.Cod_Marca;
-            m.Nombre_Marca = marcas.Nombre_Marca;
+            c.Usuario = usuario.Usuario;
+            c.Password = usuario.Password;
 
-            
-            return Ok(m);
+
+            return Ok(c);
         }
 
         // PUT: api/Marcas1/5
-        [ResponseType(typeof(void))]
+        /*[ResponseType(typeof(void))]
         public IHttpActionResult PutMarcas(string id, Marcas marcas)
         {
             if (!ModelState.IsValid)
@@ -135,10 +134,11 @@ namespace Gestion.Controllers
         {
             return db.Marcas.Count(e => e.Cod_Marca == id) > 0;
         }
-        private class mar
+        */
+        private class use
         {
-            public string Cod_Marca { get; set; }
-            public string Nombre_Marca { get; set; }
+            public string Usuario { get; set; }
+            public string Password { get; set; }
         }
 
     }
